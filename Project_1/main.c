@@ -41,7 +41,3 @@ int main()
 
     return 0;
 }
-
-
-//uhrfgeipyurtgb krfgypweruif wkehfgp3i4ytvwfnbvwp49y7utg3q4tg ekhrgft34tf
-//jdf djgfwe jdkgfwer ukdghfewf ukerygf
