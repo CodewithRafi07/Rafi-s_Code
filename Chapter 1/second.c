@@ -1,11 +1,11 @@
 #include<stdio.h>
 
 int main(){
-    printf("Hello World");
-    printf("Rafi");
+    printf("Hello World\n");
+    printf("Rafi\n\n");
 
-    printf("Najmul");
+    printf("Najmul\n");
     
-    printf("Fuck U");
+    printf("Fuck U\n");
     return 0;
 }
