@@ -521,7 +521,7 @@
 
         function createGallery() {
             const gallery = document.querySelector('.gallery');
-            const totalCards = 10;
+            const totalCards = 6;
             const radius = window.innerWidth < 768 ? 400 : 600;
             let currentAngle = 0;
             let isDragging = false;
@@ -556,7 +556,7 @@
 
             function rotateGallery(direction) {
                 clearInterval(autoRotateInterval);
-                currentAngle += direction * 36; // 360 / 10 cards = 36 degrees per card
+                currentAngle += direction * 60; // 360 / 10 cards = 36 degrees per card
                 updateCards();
             }
 
