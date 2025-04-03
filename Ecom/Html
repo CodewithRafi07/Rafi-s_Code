@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="brand">Luxury Jewels</div>
+        <nav>
+            <a href="#about">About Us</a>
+            <a href="#blog">Blog</a>
+            <div class="menu">&#x22EE;</div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="products">
+            <div class="product">
+                <img src="jewel1.jpg" alt="Gold Necklace">
+                <h2>Gold Necklace</h2>
+                <p>Elegant 24K gold necklace</p>
+                <span class="price">$499</span>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="jewel2.jpg" alt="Diamond Ring">
+                <h2>Diamond Ring</h2>
+                <p>Shiny diamond ring for special occasions</p>
+                <span class="price">$899</span>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Luxury Jewels. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
