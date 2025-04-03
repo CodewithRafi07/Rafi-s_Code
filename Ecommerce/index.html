@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Shop</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product Listings -->
+    <section class="products">
+        <div class="product" data-rating="4">
+            <img src="product1.jpg" alt="Product 1">
+            <h3>Product Name</h3>
+            <p class="price">$100</p>
+            <p class="description">This is a beautiful product description.</p>
+            <div class="rating">
+                ★★★★☆
+            </div>
+        </div>
+        <!-- Repeat for each product -->
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Jewelry Store</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
