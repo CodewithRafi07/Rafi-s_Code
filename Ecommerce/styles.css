@@ -50,8 +50,8 @@ header nav ul li a {
 }
 
 .product img {
-    width: 100%;
-    height: auto;
+    width: 1200px;
+    height: 1500px;
     transition: transform 0.3s ease;
 }
 
