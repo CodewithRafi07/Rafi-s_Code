@@ -50,8 +50,11 @@ header nav ul li a {
 }
 
 .product img {
-    width: 20px;
-    height: 20px;
+    width: 192px;
+    height: 192px; /* For a square passport photo */
+    /* If your product photos aren't square and you want to fit within the 2x2 inch area, you might adjust these */
+    object-fit: contain; /* To make sure the whole image fits within the dimensions without cropping */
+    border: 1px solid #ccc; /* Optional: Add a border to visually define the size */
     transition: transform 0.3s ease;
 }
 
