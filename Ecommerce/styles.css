@@ -76,7 +76,36 @@ header nav ul li a {
   .star:hover {
     color: orange; /* Hover effect */
   }
+
+  .product-actions {
+    margin-top: 10px; /* Add some space above the buttons */
+  }
   
+  .order-now-btn,
+  .add-to-cart-btn {
+    padding: 8px 15px;
+    margin-right: 5px; /* Add some space between the buttons */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  
+  .order-now-btn {
+    background-color: #007bff; /* Example blue color */
+    color: white;
+  }
+  
+  .add-to-cart-btn {
+    background-color: #28a745; /* Example green color */
+    color: white;
+  }
+  
+  .order-now-btn:hover,
+  .add-to-cart-btn:hover {
+    opacity: 0.9;
+  }
+
 .theme-toggle {
     position: absolute;
     top: 20px;
