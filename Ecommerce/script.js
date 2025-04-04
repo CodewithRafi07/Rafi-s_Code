@@ -11,98 +11,66 @@ window.onload = () => {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    const ratingContainer = document.querySelector('.product .rating'); // Assuming one product for now
-    const stars = ratingContainer.querySelectorAll('.star');
-    const productDiv = ratingContainer.closest('.product'); // Get the parent product div
+    const productContainers = document.querySelectorAll('.product'); // Get ALL elements with the class 'product'
   
-    if (ratingContainer) {
-      stars.forEach(star => {
-        star.addEventListener('click', function() {
-          const ratingValue = parseInt(this.getAttribute('data-value'));
+    productContainers.forEach(productDiv => {
+      const ratingContainer = productDiv.querySelector('.rating'); // Find the .rating within the current product
+      const stars = ratingContainer ? ratingContainer.querySelectorAll('.star') : []; // Get stars if rating exists
   
-          // Update the visual representation of the rating
-          stars.forEach(s => {
-            if (parseInt(s.getAttribute('data-value')) <= ratingValue) {
-              s.classList.add('active');
-            } else {
-              s.classList.remove('active');
-            }
+      if (ratingContainer) {
+        stars.forEach(star => {
+          star.addEventListener('click', function() {
+            const ratingValue = parseInt(this.getAttribute('data-value'));
+  
+            const currentStars = this.parentNode.querySelectorAll('.star'); // Get stars in the current rating
+            currentStars.forEach(s => {
+              if (parseInt(s.getAttribute('data-value')) <= ratingValue) {
+                s.classList.add('active');
+              } else {
+                s.classList.remove('active');
+              }
+            });
+  
+            productDiv.setAttribute('data-rating', ratingValue);
+            console.log(`User rated product (potentially needs ID): ${ratingValue} stars`);
+            // --- AJAX request to server would go here (needs product identification) ---
           });
   
-          // Optionally update the data-rating attribute of the product
-          if (productDiv) {
-            productDiv.setAttribute('data-rating', ratingValue);
-            console.log(`User rated this product: ${ratingValue} stars`);
-  
-            // --- Here you would typically send the rating to your server ---
-            // You would likely use an AJAX request (fetch or XMLHttpRequest)
-            // to send the 'ratingValue' and the 'product ID' to your backend.
-            // Example (conceptual):
-            /*
-            fetch('/api/rate-product', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                productId: getProductId(productDiv), // You'd need a way to identify the product
-                rating: ratingValue
-              }),
-            })
-            .then(response => response.json())
-            .then(data => {
-              console.log('Rating saved:', data);
-              // Optionally update the UI based on the server response
-            })
-            .catch(error => {
-              console.error('Error saving rating:', error);
+          star.addEventListener('mouseover', function() {
+            const hoverValue = parseInt(this.getAttribute('data-value'));
+            const currentStars = this.parentNode.querySelectorAll('.star');
+            currentStars.forEach(s => {
+              if (parseInt(s.getAttribute('data-value')) <= hoverValue) {
+                s.classList.add('hover');
+              } else {
+                s.classList.remove('hover');
+              }
             });
-            */
+          });
+  
+          star.addEventListener('mouseout', function() {
+            const currentStars = this.parentNode.querySelectorAll('.star');
+            currentStars.forEach(s => {
+              s.classList.remove('hover');
+            });
+            const currentRating = parseInt(productDiv.getAttribute('data-rating'));
+            currentStars.forEach(s => {
+              if (parseInt(s.getAttribute('data-value')) <= currentRating) {
+                s.classList.add('active');
+              } else {
+                s.classList.remove('active');
+              }
+            });
+          });
+        });
+  
+        // Initial rendering of the rating for each product
+        const initialRating = parseInt(productDiv.getAttribute('data-rating'));
+        stars.forEach(s => {
+          if (parseInt(s.getAttribute('data-value')) <= initialRating) {
+            s.classList.add('active');
           }
         });
-  
-        star.addEventListener('mouseover', function() {
-          const hoverValue = parseInt(this.getAttribute('data-value'));
-          stars.forEach(s => {
-            if (parseInt(s.getAttribute('data-value')) <= hoverValue) {
-              s.classList.add('hover');
-            } else {
-              s.classList.remove('hover');
-            }
-          });
-        });
-  
-        star.addEventListener('mouseout', function() {
-          stars.forEach(s => {
-            s.classList.remove('hover');
-          });
-          // Re-apply active class based on the current data-rating (if needed)
-          const currentRating = parseInt(productDiv.getAttribute('data-rating'));
-          stars.forEach(s => {
-            if (parseInt(s.getAttribute('data-value')) <= currentRating) {
-              s.classList.add('active');
-            } else {
-              s.classList.remove('active');
-            }
-          });
-        });
-      });
-  
-      // Initial rendering of the rating based on the data-rating attribute
-      const initialRating = parseInt(productDiv.getAttribute('data-rating'));
-      stars.forEach(s => {
-        if (parseInt(s.getAttribute('data-value')) <= initialRating) {
-          s.classList.add('active');
-        }
-      });
-    }
+      }
+    });
   });
-  
-  // Helper function (you'll need to implement this based on your HTML structure)
-  function getProductId(productElement) {
-    // Example: If you have a data-product-id attribute
-    // return productElement.getAttribute('data-product-id');
-    // Or if the ID is part of a class or another element
-    // ... your logic to extract the product ID ...
-    return 'product-123'; // Placeholder
-  }
