@@ -59,25 +59,7 @@ header nav ul li a {
     transform: scale(1.1);
 }
 
-.rating {
-    display: inline-block; /* To keep stars in a line */
-    font-size: 1.5em; /* Adjust size as needed */
-    color: #ccc; /* Default color of unselected stars */
-  }
-  
-  .star {
-    cursor: pointer; /* Indicate interactivity */
-  }
-  
-  .star.active {
-    color: gold; /* Color of selected/active stars */
-  }
-  
-  .star:hover {
-    color: orange; /* Hover effect */
-  }
-
-  .product-actions {
+.product-actions {
     margin-top: 10px; /* Add some space above the buttons */
   }
   
@@ -106,6 +88,23 @@ header nav ul li a {
     opacity: 0.9;
   }
 
+.rating {
+    display: inline-block; /* To keep stars in a line */
+    font-size: 1.5em; /* Adjust size as needed */
+    color: #ccc; /* Default color of unselected stars */
+  }
+  
+  .star {
+    cursor: pointer; /* Indicate interactivity */
+  }
+  
+  .star.active {
+    color: gold; /* Color of selected/active stars */
+  }
+  
+  .star:hover {
+    color: orange; /* Hover effect */
+  }
 .theme-toggle {
     position: absolute;
     top: 20px;
