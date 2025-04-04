@@ -60,9 +60,23 @@ header nav ul li a {
 }
 
 .rating {
-    margin-top: 10px;
-}
-
+    display: inline-block; /* To keep stars in a line */
+    font-size: 1.5em; /* Adjust size as needed */
+    color: #ccc; /* Default color of unselected stars */
+  }
+  
+  .star {
+    cursor: pointer; /* Indicate interactivity */
+  }
+  
+  .star.active {
+    color: gold; /* Color of selected/active stars */
+  }
+  
+  .star:hover {
+    color: orange; /* Hover effect */
+  }
+  
 .theme-toggle {
     position: absolute;
     top: 20px;
