@@ -110,6 +110,7 @@ header nav ul li a {
   }
 .theme-toggle {
     position: absolute;
+    background-color: #178e58;
     top: 20px;
     right: 20px;
 }
