@@ -9,7 +9,7 @@ header {
     background-color: #4b0082; /* Purple */
     padding: 20px;
     text-align: center;
-    color: white;
+    color: #dec2db;
 }
 
 header nav ul {
@@ -31,22 +31,22 @@ header nav ul li a {
 /* Product grid */
 .products {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     padding: 10px;
 }
 
 .product {
-    background-color: #00a1e0;
+    background-color: #6da0e1;
     padding: 10px;
-    border: 2px solid #db1212;
+    border: 2px solid #04634d;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product:hover {
     transform: scale(1.05);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px #5b62b3;
 }
 
 .product img {
