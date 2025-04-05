@@ -38,7 +38,7 @@ header nav ul li a {
 
 .product {
     background-color: rgb(126, 31, 204);
-    padding: 15px;
+    padding: 10px;
     border: 2px solid #db1212;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
