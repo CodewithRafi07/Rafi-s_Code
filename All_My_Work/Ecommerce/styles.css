@@ -1,0 +1,155 @@
+/* Basic styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4b0082; /* Purple */
+    padding: 20px;
+    text-align: center;
+    color: #dec2db;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Product grid */
+.products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.product {
+    background-color: #6da0e1;
+    padding: 10px;
+    border: 2px solid #04634d;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px #5b62b3;
+}
+
+.product img {
+    width: 192px;
+    height: 192px; /* For a square passport photo */
+    /* If your product photos aren't square and you want to fit within the 2x2 inch area, you might adjust these */
+    object-fit: contain; /* To make sure the whole image fits within the dimensions without cropping */
+    border: 1px solid #ccc; /* Optional: Add a border to visually define the size */
+    transition: transform 0.3s ease;
+}
+
+.product:hover img {
+    transform: scale(1.1);
+}
+
+.product-actions {
+    margin-top: 10px; /* Add some space above the buttons */
+  }
+  
+  .order-now-btn,
+  .add-to-cart-btn {
+    padding: 8px 15px;
+    margin-right: 5px; /* Add some space between the buttons */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  
+  .order-now-btn {
+    background-color: #007bff; /* Example blue color */
+    color: white;
+  }
+  
+  .add-to-cart-btn {
+    background-color: #28a745; /* Example green color */
+    color: white;
+  }
+  
+  .order-now-btn:hover,
+  .add-to-cart-btn:hover {
+    opacity: 0.9;
+  }
+
+.rating {
+    display: inline-block; /* To keep stars in a line */
+    font-size: 1.5em; /* Adjust size as needed */
+    color: #ccc; /* Default color of unselected stars */
+  }
+  
+  .star {
+    cursor: pointer; /* Indicate interactivity */
+  }
+  
+  .star.active {
+    color: gold; /* Color of selected/active stars */
+  }
+  
+  .star:hover {
+    color: orange; /* Hover effect */
+  }
+.theme-toggle {
+    position: absolute;
+    background-color: #178e58;
+    top: 20px;
+    right: 20px;
+}
+
+/* Dark theme styles */
+body.dark {
+    background-color: #333;
+    color: white;
+}
+
+body.dark header {
+    background-color: #222;
+}
+
+body.dark .product {
+    background-color: #444;
+    color: white;
+    border-color: #666;
+}
+
+body.dark .product:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+    header nav ul {
+      flex-direction: column; /* Stack the navigation items vertically */
+      align-items: center; /* Center the items horizontally */
+    }
+  
+    header nav ul li {
+      display: block; /* Make each list item take full width */
+      margin: 10px 0; /* Add vertical spacing */
+      text-align: center; /* Center text within list items */
+    }
+  
+    .products {
+      grid-template-columns: 1fr; /* Display products in a single column */
+    }
+  }

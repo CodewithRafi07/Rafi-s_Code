@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLIMMER - Exquisite Jewelry Collection</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap">
+</head>
+<body>
+    <header class="sticky-nav">
+        <div class="container nav-content">
+            <div class="logo">GLIMMER</div>
+            <nav>
+                <ul class="top-nav">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li class="dropdown">
+                        <div class="menu-icon">⋮</div>
+                        <ul class="dropdown-content">
+                            <li><a href="#rings">Rings</a></li>
+                            <li><a href="#necklaces">Necklaces</a></li>
+                            <li><a href="#bracelets">Bracelets</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button id="theme-toggle" aria-label="Toggle Theme">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 3a9 9 0 019 9 9 9 0 01-9 9 9 9 0 01-9-9 9 9 0 019-9m0 14a5 5 0 005-5 5 5 0 00-5-5 5 5 0 00-5 5 5 5 0 005 5z"/>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="background-overlay"></div>
+        <div class="hero-content">
+            <h1>Exquisite Jewelry for Every Occasion</h1>
+            <p>Discover our stunning collection of handcrafted jewelry.</p>
+            <a href="#products" class="cta-button animated-button">Explore Collection</a>
+        </div>
+    </section>
+
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2>Our Stunning Collection</h2>
+            <div class="product-grid">
+                <div class="product-card fade-in">
+                    <div class="product-image-container">
+                        <img src="placeholder-ring-1.jpg" alt="Elegant Ring">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Serenity Solitaire</h3>
+                        <p class="product-price">$450</p>
+                        <p class="product-color">Silver</p>
+                        <p class="product-brand">Glimmer Classics</p>
+                        <div class="star-rating" data-rating="4.5">★★★★★</div>
+                        <p class="product-description">A timeless solitaire ring with a brilliant-cut cubic zirconia.</p>
+                        <p class="customer-review">"Absolutely stunning! It sparkles beautifully and feels very high quality." - Sarah M.</p>
+                    </div>
+                </div>
+                <div class="product-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="product-image-container">
+                        <img src="placeholder-necklace-1.jpg" alt="Dazzling Necklace">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Aurora Pendant</h3>
+                        <p class="product-price">$620</p>
+                        <p class="product-color">Rose Gold</p>
+                        <p class="product-brand">Luxe Design</p>
+                        <div class="star-rating" data-rating="5.0">★★★★★</div>
+                        <p class="product-description">A delicate rose gold pendant adorned with shimmering crystals.</p>
+                        <p class="customer-review">"This necklace is so elegant and catches the light perfectly. I love it!" - Emily K.</p>
+                    </div>
+                </div>
+                <div class="product-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="product-image-container">
+                        <img src="placeholder-bracelet-1.jpg" alt="Chic Bracelet">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Celestial Cuff</h3>
+                        <p class="product-price">$380</p>
+                        <p class="product-color">Gold</p>
+                        <p class="product-brand">Starlight Jewels</p>
+                        <div class="star-rating" data-rating="4.0">★★★★☆</div>
+                        <p class="product-description">A stylish gold cuff bracelet with intricate celestial engravings.</p>
+                        <p class="customer-review">"I wear this bracelet all the time. It's comfortable and looks very luxurious." - Jessica L.</p>
+                    </div>
+                </div>
+                <div class="product-card fade-in" style="animation-delay: 0.6s;">
+                    <div class="product-image-container">
+                        <img src="placeholder-earring-1.jpg" alt="Sparkling Earrings">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Eternity Hoops</h3>
+                        <p class="product-price">$290</p>
+                        <p class="product-color">White Gold</p>
+                        <p class="product-brand">Timeless Gems</p>
+                        <div class="star-rating" data-rating="4.8">★★★★★</div>
+                        <p class="product-description">Classic white gold hoop earrings pavé-set with tiny diamonds.</p>
+                        <p class="customer-review">"These hoops are so versatile and add a touch of sparkle to any outfit." - Amanda P.</p>
+                    </div>
+                </div>
+                <div class="product-card fade-in" style="animation-delay: 0.8s;">
+                    <div class="product-image-container">
+                        <img src="placeholder-ring-2.jpg" alt="Gemstone Ring">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Mystic Amethyst Ring</h3>
+                        <p class="product-price">$550</p>
+                        <p class="product-color">Purple</p>
+                        <p class="product-brand">Vivid Stones</p>
+                        <div class="star-rating" data-rating="4.3">★★★★☆</div>
+                        <p class="product-description">A captivating sterling silver ring featuring a vibrant amethyst gemstone.</p>
+                        <p class="customer-review">"The color of the amethyst is stunning! It's a real statement piece." - Olivia R.</p>
+                    </div>
+                </div>
+                <div class="product-card fade-in" style="animation-delay: 1.0s;">
+                    <div class="product-image-container">
+                        <img src="placeholder-necklace-2.jpg" alt="Statement Necklace">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Radiant Cascade Necklace</h3>
+                        <p class="product-price">$780</p>
+                        <p class="product-color">Yellow Gold</p>
+                        <p class="product-brand">Golden Hour Jewelry</p>
+                        <div class="star-rating" data-rating="4.9">★★★★★</div>
+                        <p class="product-description">A luxurious yellow gold necklace with a cascading design of sparkling crystals.</p>
+                        <p class="customer-review">"This necklace is absolutely breathtaking. It's perfect for special occasions." - Sophia T.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination">
+                <button class="pagination-button disabled">Previous</button>
+                <span class="page-number">Page 1 of 10</span>
+                <button class="pagination-button">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section section-divider-skew-down">
+        <div class="container slide-in from-left">
+            <h2>About GLIMMER</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Our passion for crafting exquisite jewelry drives us to create timeless pieces that reflect elegance and luxury. Each piece is meticulously handcrafted with the finest materials and attention to detail.</p>
+        </div>
+    </section>
+
+    <section id="blog" class="blog-section section-divider-curve-up">
+        <div class="container slide-in from-right">
+            <h2>Our Latest Blog Posts</h2>
+            <div class="blog-grid">
+                <div class="blog-item">
+                    <h3>The Art of Gemstone Selection</h3>
+                    <p>Learn about the intricate process of choosing the perfect gemstones for our jewelry.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+                <div class="blog-item">
+                    <h3>Caring for Your Precious Jewels</h3>
+                    <p>Tips and tricks to ensure your jewelry retains its brilliance for years to come.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 GLIMMER. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
