@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>চেকআউট পেজ</title>
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .checkout-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+    .form-section, .product-section {
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+    }
+    h2 {
+      color: #ffcc00;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      background-color: #222;
+      color: white;
+      border: 1px solid #444;
+      border-radius: 5px;
+    }
+    .radio-group {
+      margin-bottom: 20px;
+    }
+    .radio-group label {
+      display: block;
+      margin-top: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ffcc00;
+      color: #000;
+      border: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .product-details {
+      border-top: 1px solid #333;
+      padding-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div id="checkout-product">
+    <img id="product-image" src="" alt="Product Image" style="max-width: 100px; height: auto;">
+    <h2 id="product-name">Product Name</h2>
+    <p id="product-price">Tk 0</p>
+  </div>
+
+  <h2><center>অর্ডার সম্পন্ন করতে নিচের তথ্য লিখুন</center></h2>
+
+  <div class="checkout-container">
+
+    <div class="form-section">
+      <h3>বিলিং ডিটেইলস</h3>
+      <label>আপনার নাম লিখুন *</label>
+      <input type="text" placeholder="পূর্ণ নাম লিখুন">
+
+      <label>আপনার মোবাইল নাম্বার *</label>
+      <input type="text" placeholder="মোবাইল নাম্বার লিখুন">
+
+      <label>জেলা *</label>
+      <select>
+        <option>জেলা সিলেক্ট করুন</option>
+        <option>ঢাকা</option>
+        <option>চট্টগ্রাম</option>
+        <option>রাজশাহী</option>
+        </select>
+
+      <label>থানা *</label>
+      <select>
+        <option>থানা সিলেক্ট করুন</option>
+        <option>মিরপুর</option>
+        <option>গুলশান</option>
+        </select>
+
+      <label>সম্পূর্ণ ঠিকানা</label>
+      <input type="text" placeholder="বাড়ি/রোড, ইউনিট/ফ্ল্যাট, পোস্ট কোড">
+
+      <div class="radio-group">
+        <h3>পেমেন্ট অপশন</h3>
+        <label><input type="radio" name="payment" checked> Cash On Delivery</label>
+        <label><input type="radio" name="payment"> Bkash</label>
+        <label><input type="radio" name="payment"> Nagad</label>
+        <label><input type="radio" name="payment"> Rocket</label>
+        <label><input type="radio" name="payment"> Upay</label>
+        <label><input type="radio" name="payment"> Visa</label>
+      </div>
+
+      <button>অর্ডার নিশ্চিত করুন</button>
+    </div>
+
+    <div class="product-section">
+      <h3>প্রোডাক্ট ডিটেইলস</h3>
+      <div class="product-details">
+        <p><strong>প্রোডাক্ট নাম:</strong> <span id="product-name-summary">আপনার নির্বাচিত প্রোডাক্ট</span></p>
+        <p><strong>মূল্য:</strong> Tk <span id="product-price-summary">0</span></p>
+        <p><strong>ডেলিভারি চার্জ:</strong> Tk <span id="deliveryCharge">120</span></p>
+        <hr>
+        <p><strong>মোট:</strong> Tk <span id="totalPrice">0</span></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    window.onload = function () {
+      const productName = localStorage.getItem('productName') || 'নির্বাচিত হয়নি';
+      const productPrice = parseFloat(localStorage.getItem('productPrice')) || 0;
+      const productImage = localStorage.getItem('productImage') || '';
+
+      document.getElementById('product-name').innerText = productName;
+      document.getElementById('product-price').innerText = 'Tk ' + productPrice;
+      document.getElementById('product-image').src = productImage;
+
+      document.getElementById('product-name-summary').innerText = productName;
+      document.getElementById('product-price-summary').innerText = productPrice;
+      document.getElementById('totalPrice').innerText = productPrice + 120;
+    };
+  </script>
+  <script src="checkout.js"></script>
+
+</body>
+</html>
