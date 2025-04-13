@@ -66,6 +66,17 @@ a:hover {
 }
 
 /* Sticky Navigation */
+.logo-img {
+  height: 100px; /* Adjust as needed */
+  width: auto;
+  object-fit: contain;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
 .sticky-nav {
   position: sticky;
   top: 0;
@@ -179,36 +190,6 @@ body.dark-mode .dropdown-content {
 
 .dropdown-content li:hover {
   background-color: rgba(0, 0, 0, 0.05);
-}
-
-
-/* Theme Toggle */
-#theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin-left: 20px;
-  color: var(--text-light);
-  transition: color 0.3s ease;
-}
-
-#theme-toggle:hover {
-  color: var(--secondary-blue);
-}
-
-#theme-toggle svg {
-  width: 24px;
-  height: 24px;
-  display: block;
-}
-
-body.dark-mode #theme-toggle {
-  color: var(--text-dark);
-}
-
-body.dark-mode #theme-toggle:hover {
-  color: var(--accent-yellow);
 }
 
 /* Hero Section */

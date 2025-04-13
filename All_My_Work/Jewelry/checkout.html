@@ -123,9 +123,9 @@
 </div>
 
   <div id="checkout-product">
-    <img id="product-image" src="" alt="Product Image" style="max-width: 100px; height: auto;">
+    <center><img id="product-image" src="" alt="Product Image" style="max-width: 100px; height: auto;">
     <h2 id="product-name">Product Name</h2>
-    <p id="product-price">Tk 0</p>
+    <p id="product-price">Tk 0</p></center>
   </div>
 
   <h2><center>অর্ডার সম্পন্ন করতে নিচের তথ্য লিখুন</center></h2>
@@ -208,7 +208,7 @@
 
     setTimeout(() => {
       popup.classList.remove("show");
-    }, 5000); // auto-close after 5 seconds
+    }, 4000); // auto-close after 5 seconds
   }
 
   function closePopup() {
@@ -216,7 +216,10 @@
   }
 
   // Show popup on button click (order confirm)
-  document.querySelector("button").addEventListener("click", showPopup);
+  document.querySelector("button").addEventListener("click", function (e) {
+    e.preventDefault(); // পেজ রিলোড বন্ধ রাখার জন্য
+    showPopup();
+  });
 
 
   </script>

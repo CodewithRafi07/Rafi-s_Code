@@ -10,7 +10,10 @@
 <body>
     <header class="sticky-nav">
         <div class="container nav-content">
-            <div class="logo">GLIMMER</div>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="photo/logo1.png" alt="GLIMMER Logo" class="logo-img">
+            </div>
             <nav>
                 <ul class="top-nav">
                     <li><a href="#about">About Us</a></li>
@@ -24,11 +27,6 @@
                         </ul>
                     </li>
                     <li>
-                        <button id="theme-toggle" aria-label="Toggle Theme">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 3a9 9 0 019 9 9 9 0 01-9 9 9 9 0 01-9-9 9 9 0 019-9m0 14a5 5 0 005-5 5 5 0 00-5-5 5 5 0 00-5 5 5 5 0 005 5z"/>
-                            </svg>
-                        </button>
                     </li>
                 </ul>
             </nav>
@@ -189,7 +187,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-column">
-                <img src="your-logo.png" alt="Logo" class="footer-logo" />
+                <img src="photo/logo1.png" alt="Logo" class="footer-logo" />
                 <h4>Need Help?</h4>
                 <p>📞 01950238279</p>
                 <p>📧 Contact@glimmer.com</p>
@@ -245,7 +243,7 @@
             console.log("Buy Now button clicked!");
             const productCard = button.closest('.product-card');
             const name = productCard.querySelector('.product-name').innerText;
-            const price = productCard.querySelector('.product-price').innerText;
+            const price = productCard.querySelector('.discounted-price').innerText;
             const image = productCard.querySelector('img').getAttribute('src');
 
             // Save details to localStorage
