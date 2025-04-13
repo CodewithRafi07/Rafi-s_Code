@@ -286,6 +286,13 @@
             window.location.href = 'checkout.html'; // make sure this file exists
         }
     </script>
+    <script>
+        function selectProduct(name, price) {
+          localStorage.setItem("selectedProductName", name);
+          localStorage.setItem("selectedProductPrice", price);
+        }
+      </script>
+      
 
 </body>
 </html>

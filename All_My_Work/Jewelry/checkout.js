@@ -55,6 +55,26 @@ window.onload = function () {
     orders.push(order);
     localStorage.setItem("orders", JSON.stringify(orders));
   });
+  function saveOrderToLocalStorage(order) {
+    const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+  }
+  document.querySelector("button").addEventListener("click", () => {
+    const productName = document.getElementById("product-name-summary").innerText;
+    const productPrice = document.getElementById("product-price-summary").innerText;
+    const total = document.getElementById("totalPrice").innerText;
+    const paymentMethod = document.querySelector('input[name="payment"]:checked').parentElement.innerText.trim();
+  
+    const order = {
+      productName,
+      total,
+      paymentMethod,
+      user: "Anonymous" // You can replace this with form inputs if needed
+    };
+  
+    saveOrderToLocalStorage(order);
+  });
   
   
 

@@ -16,4 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
   
     document.getElementById("order-list").innerHTML = orderListHTML;
   });
-  
+  const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+
+document.getElementById("order-count").innerText = orders.length;
+
+const orderListHTML = orders.map(order => `
+  <p>Product: ${order.productName}, Payment: ${order.paymentMethod}, Total: ${order.total}</p>
+`).join("");
+
+document.getElementById("order-list").innerHTML = orderListHTML;
