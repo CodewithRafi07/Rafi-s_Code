@@ -1,0 +1,61 @@
+<div class="dashboard">
+    <h2>Admin Dashboard</h2>
+  
+    <section class="stats">
+      <div class="stat">
+        <h3>Visitor Count</h3>
+        <p id="visitor-count">Loading...</p>
+      </div>
+      <div class="stat">
+        <h3>Add to Cart</h3>
+        <p id="cart-count">Loading...</p>
+      </div>
+      <div class="stat">
+        <h3>Orders</h3>
+        <p id="order-count">Loading...</p>
+      </div>
+    </section>
+  
+    <section class="order-details">
+      <h3>Recent Orders</h3>
+      <div id="order-list">Loading...</div>
+    </section>
+  </div>
+  
+  <style>
+    .dashboard {
+      padding: 20px;
+      background-color: #f4f7fa;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+    .stats {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .stat {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      flex: 1;
+    }
+    .stat h3 {
+      font-size: 1.2rem;
+    }
+    .order-details {
+      margin-top: 40px;
+    }
+    .order-details h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    .order-list {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+  <script src="dashboard.js"></script>

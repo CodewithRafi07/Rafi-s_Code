@@ -37,6 +37,25 @@ window.onload = function () {
   function closePopup() {
     document.getElementById("paymentPopup").style.display = "none";
   }
+  document.querySelector("button").addEventListener("click", () => {
+    const name = document.getElementById("product-name-summary").innerText;
+    const price = document.getElementById("product-price-summary").innerText;
+    const total = document.getElementById("totalPrice").innerText;
+    const paymentMethod = document.querySelector('input[name="payment"]:checked').nextSibling.textContent.trim();
+  
+    const order = {
+      productName: name,
+      total: total,
+      user: "Guest", // or use a form to ask name/email later
+      paymentMethod,
+      date: new Date().toLocaleString()
+    };
+  
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+  });
+  
   
 
 

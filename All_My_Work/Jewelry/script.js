@@ -45,6 +45,4 @@ function goToCheckout(button) {
     } else {
         console.error("Could not find the closest product card.");
     }
-}
-
 // Note: The window.onload function for checkout logic should be in checkout.js
