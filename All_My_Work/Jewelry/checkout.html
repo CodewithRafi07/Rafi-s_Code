@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>চেকআউট পেজ</title>
   <style>
+    
     body {
       background-color: #000;
       color: white;
@@ -58,9 +59,69 @@
       border-top: 1px solid #333;
       padding-top: 15px;
     }
-  </style>
+    
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #7f00ff, #ffb700, #00cfff, #ff6600);
+    color: white;
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    font-size: 1.3rem;
+    text-align: center;
+    animation: popSlide 0.5s ease;
+    max-width: 90%;
+    width: 350px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: fixed;
+  }
+
+  @keyframes popSlide {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .popup.show {
+    display: block;
+  }
+
+  .popup .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: white;
+    font-size: 1.2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .popup .popup-content {
+    padding: 10px 0;
+  }
+</style>
 </head>
 <body>
+  <!-- Custom Payment Popup -->
+<div id="paymentPopup" class="popup">
+  <div class="popup-content">
+    <span class="close-button" onclick="closePopup()">&times;</span>
+    <h2>পেমেন্ট তথ্য</h2>
+    <p id="paymentMessage">Loading...</p>
+  </div>
+</div>
+
   <div id="checkout-product">
     <img id="product-image" src="" alt="Product Image" style="max-width: 100px; height: auto;">
     <h2 id="product-name">Product Name</h2>
@@ -137,6 +198,27 @@
       document.getElementById('product-price-summary').innerText = productPrice;
       document.getElementById('totalPrice').innerText = productPrice + 120;
     };
+  
+  function showPopup() {
+    const popup = document.getElementById("paymentPopup");
+    const message = document.getElementById("paymentMessage");
+
+    message.innerHTML = "❤️ অর্ডার নিশ্চিত হয়েছে! ধন্যবাদ আমাদের সাথে থাকার জন্য।";
+    popup.classList.add("show");
+
+    setTimeout(() => {
+      popup.classList.remove("show");
+    }, 5000); // auto-close after 5 seconds
+  }
+
+  function closePopup() {
+    document.getElementById("paymentPopup").classList.remove("show");
+  }
+
+  // Show popup on button click (order confirm)
+  document.querySelector("button").addEventListener("click", showPopup);
+
+
   </script>
   <script src="checkout.js"></script>
 
