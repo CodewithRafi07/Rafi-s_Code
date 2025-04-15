@@ -140,20 +140,94 @@
       <label>আপনার মোবাইল নাম্বার *</label>
       <input type="text" placeholder="মোবাইল নাম্বার লিখুন">
 
-      <label>জেলা *</label>
-      <select>
-        <option>জেলা সিলেক্ট করুন</option>
-        <option>ঢাকা</option>
-        <option>চট্টগ্রাম</option>
-        <option>রাজশাহী</option>
-        </select>
+      <!-- Division Dropdown -->
+<label>বিভাগ *</label>
+<select id="divisionSelect" onchange="updateDistrictOptions()">
+  <option value="">বিভাগ সিলেক্ট করুন</option>
+  <option value="ঢাকা">ঢাকা</option>
+  <option value="চট্টগ্রাম">চট্টগ্রাম</option>
+  <option value="রাজশাহী">রাজশাহী</option>
+  <option value="খুলনা">খুলনা</option>
+  <option value="সিলেট">সিলেট</option>
+  <option value="বরিশাল">বরিশাল</option>
+  <option value="রংপুর">রংপুর</option>
+  <option value="ময়মনসিংহ">ময়মনসিংহ</option>
+</select>
 
-      <label>থানা *</label>
-      <select>
-        <option>থানা সিলেক্ট করুন</option>
-        <option>মিরপুর</option>
-        <option>গুলশান</option>
-        </select>
+<!-- District Dropdown -->
+<label>জেলা *</label>
+<select id="districtSelect" onchange="updateThanaOptions()">
+  <option value="">জেলা সিলেক্ট করুন</option>
+</select>
+
+<!-- Thana Dropdown -->
+<label>থানা *</label>
+<select id="thanaSelect">
+  <option value="">থানা সিলেক্ট করুন</option>
+</select>
+
+<script>
+  // Division -> District data
+  const divisionData = {
+    "ঢাকা": ["ঢাকা", "গাজীপুর", "নারায়ণগঞ্জ", "নরসিংদী", "মুন্সিগঞ্জ" , "মানিকগঞ্জ", "টাঙ্গাইল", "কিশোরগঞ্জ", "ফরিদপুর", "মাদারিপুর", "শরিয়তপুর", "গোপালগঞ্জ", "রাজবাড়ি"],
+    "চট্টগ্রাম": ["চট্টগ্রাম", "কুমিল্লা", "কক্সবাজার", "নোয়াখালী", "ব্রাহ্মণবাড়িয়া", "চাঁদপুর", "লক্ষ্মীপুর", "ফেনী", "খাগড়াছড়ি", "রাঙ্গামাটি", "বান্দরবান"],
+    "রাজশাহী": ["রাজশাহী", "বগুড়া", "নাটোর", "নওগাঁ", "চাঁপাইনবাবগঞ্জ", "জয়পুরহাট", "পাবনা", "সিরাজগঞ্জ"],
+    "খুলনা": ["খুলনা", " 	বাগেরহাট", "সাতক্ষীরা", "যশোর", "নড়াইল", "মাগুরা", "ঝিনাইদহ", "কুষ্টিয়া", "চুয়াডাঙ্গা", "মেহেরপুর"],
+    "সিলেট": ["সিলেট", "মৌলভীবাজার", "সুনামগঞ্জ", "হবিগঞ্জ"],
+    "বরিশাল": ["বরিশাল", "পটুয়াখালী", "ভোলা", "বরগুনা", "ঝালকাঠি", "পিরোজপুর"],
+    "রংপুর" :["কুড়িগ্রাম", "রংপুর", "লালমনিরহাট", "গাইবান্ধাা", "দিনাজপুর", "পঞ্চগড়", "ঠাকুরগাঁও", "নীলফামারী"],
+    "ময়মনসিংহ":["ময়মনসিংহ", "জামালপুর", "নেত্রকোণা", "শেরপুর"],
+  };
+
+  // District -> Thana data
+  const thanaData = {
+    "ঢাকা": ["ঢাকা মহানগর", "মিরপুর", "গুলশান", "উত্তরা", "তেজগাঁও", "ধামরাই", "সাভার", "কেরাণীগঞ্জ", "কটোয়া", " খিলগাঁও", "বাড্ডা", "রামপুর", "সভাপটেক"],
+    "গাজীপুর": ["টঙ্গী", "কাপাসিয়া"],
+    "নারায়ণগঞ্জ": ["ফতুল্লা", "সিদ্ধিরগঞ্জ"],
+    "চট্টগ্রাম": ["পতেঙ্গা", "হালিশহর"],
+    "কক্সবাজার": ["টেকনাফ", "চকরিয়া"],
+    "রাজশাহী": ["বোয়ালিয়া", "পুঠিয়া"],
+    "বগুড়া": ["সদর", "নন্দীগ্রাম"]
+  };
+
+  function updateDistrictOptions() {
+    const division = document.getElementById("divisionSelect").value;
+    const districtSelect = document.getElementById("districtSelect");
+    const thanaSelect = document.getElementById("thanaSelect");
+
+    // Reset options
+    districtSelect.innerHTML = `<option value="">জেলা সিলেক্ট করুন</option>`;
+    thanaSelect.innerHTML = `<option value="">থানা সিলেক্ট করুন</option>`;
+
+    if (division && divisionData[division]) {
+      divisionData[division].forEach(district => {
+        const option = document.createElement("option");
+        option.value = district;
+        option.textContent = district;
+        districtSelect.appendChild(option);
+      });
+    }
+  }
+
+  function updateThanaOptions() {
+    const district = document.getElementById("districtSelect").value;
+    const thanaSelect = document.getElementById("thanaSelect");
+
+    // Reset thanas
+    thanaSelect.innerHTML = `<option value="">থানা সিলেক্ট করুন</option>`;
+
+    if (district && thanaData[district]) {
+      thanaData[district].forEach(thana => {
+        const option = document.createElement("option");
+        option.value = thana;
+        option.textContent = thana;
+        thanaSelect.appendChild(option);
+      });
+    }
+  }
+</script>
+
+      
 
       <label>সম্পূর্ণ ঠিকানা</label>
       <input type="text" placeholder="বাড়ি/রোড, ইউনিট/ফ্ল্যাট, পোস্ট কোড">
@@ -187,16 +261,16 @@
   <script>
     window.onload = function () {
       const productName = localStorage.getItem('productName') || 'নির্বাচিত হয়নি';
-      const productPrice = parseFloat(localStorage.getItem('productPrice')) || 0;
+      const productPrice = parseFloat(localStorage.getItem('discountedPrice')) || 0;
       const productImage = localStorage.getItem('productImage') || '';
 
       document.getElementById('product-name').innerText = productName;
-      document.getElementById('product-price').innerText = 'Tk ' + productPrice;
+      document.getElementById('discounted-price').innerText = 'Tk ' + discountedPrice;
       document.getElementById('product-image').src = productImage;
 
       document.getElementById('product-name-summary').innerText = productName;
-      document.getElementById('product-price-summary').innerText = productPrice;
-      document.getElementById('totalPrice').innerText = productPrice + 120;
+      document.getElementById('discounted-price-summary').innerText = discountedPrice;
+      document.getElementById('totalPrice').innerText = discounted + 120;
     };
   
   function showPopup() {

@@ -25,7 +25,7 @@ window.onload = function () {
       messageElement.innerHTML = `
         <strong>${paymentMethod} পেমেন্ট</strong><br>
         অনুগ্রহ করে ${paymentMethod} নম্বরে টাকা পাঠান:<br><br>
-        <strong>নম্বর:</strong> 01XXXXXXXXX<br>
+        <strong>নম্বর:</strong> 01602459077<br>
         <strong>রেফারেন্স:</strong> আপনার নাম<br><br>
         <em>ট্রানজ্যাকশন আইডি দিন আমাদের ফেসবুক ইনবক্সে।</em>
       `;
