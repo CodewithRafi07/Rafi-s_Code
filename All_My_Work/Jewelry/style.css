@@ -326,6 +326,15 @@ body.dark-mode .products-section {
     z-index: 1;
 }
 
+@media (max-width: 768px) {
+  /* Styles for tablets and smaller devices */
+}
+
+@media (max-width: 480px) {
+  /* Styles for mobile phones */
+}
+
+
 .product-image-container {
     width: 100%;
     height: auto; /* Adjust height if needed */
