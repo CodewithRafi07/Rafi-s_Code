@@ -51,6 +51,7 @@
     color: #333;
   }
   
+  
   /* Product Grid (3 products per row on mobile) */
   .product-grid {
     display: grid;
