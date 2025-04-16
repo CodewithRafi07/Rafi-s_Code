@@ -48,10 +48,10 @@
   
   /* Product Grid (One column on mobile) */
   .product-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin: 40px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 products per row */
+  gap: 20px;
+  margin: 40px 0;
   }
   
   .product-card {
