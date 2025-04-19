@@ -7,7 +7,7 @@
   <style>
     
     body {
-      background-color: #000;
+      background-color: #196e88;
       color: white;
       font-family: 'Arial', sans-serif;
       margin: 0;
@@ -20,7 +20,7 @@
       justify-content: center;
     }
     .form-section, .product-section {
-      background-color: #111;
+      background-color: #705e5e;
       padding: 20px;
       border-radius: 10px;
       width: 400px;
@@ -66,7 +66,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: linear-gradient(135deg, #7f00ff, #ffb700, #00cfff, #ff6600);
+    background: linear-gradient(135deg, #7f00ff, #7f00ff, #7f00ff, #7f00ff);
     color: white;
     padding: 25px 30px;
     border-radius: 20px;
@@ -321,8 +321,8 @@
     <div class="product-section">
       <h3>প্রোডাক্ট ডিটেইলস</h3>
       <div class="product-details">
-        <p><strong>প্রোডাক্ট নাম:</strong> <span id="product-name-summary">আপনার নির্বাচিত প্রোডাক্ট</span></p>
-        <p><strong>মূল্য:</strong> Tk <span id="product-price-summary">0</span></p>
+        <p><strong>প্রোডাক্ট নাম:</strong> <span id="productName">আপনার নির্বাচিত প্রোডাক্ট</span></p>
+        <p><strong>মূল্য:</strong> Tk <span id="discoutedPrice">0</span></p>
         <p><strong>ডেলিভারি চার্জ:</strong> Tk <span id="deliveryCharge">120</span></p>
         <hr>
         <p><strong>মোট:</strong> Tk <span id="totalPrice">0</span></p>
@@ -332,19 +332,21 @@
   </div>
 
   <script>
-    window.onload = function () {
-      const productName = localStorage.getItem('productName') || 'নির্বাচিত হয়নি';
-      const productPrice = parseFloat(localStorage.getItem('discountedPrice')) || 0;
-      const productImage = localStorage.getItem('productImage') || '';
+      window.onload = function () {
+    const name = localStorage.getItem("selectedProductName");
+    const price = parseFloat(localStorage.getItem("selecteddiscountedPrice"));
+    const deliveryCharge = 120;
 
-      document.getElementById('product-name').innerText = productName;
-      document.getElementById('discounted-price').innerText = 'Tk ' + discountedPrice;
-      document.getElementById('product-image').src = productImage;
-
-      document.getElementById('product-name-summary').innerText = productName;
-      document.getElementById('discounted-price-summary').innerText = discountedPrice;
-      document.getElementById('totalPrice').innerText = discounted + 120;
-    };
+    if (name && !isNaN(discountedprice)) {
+      document.getElementById("productName").innerText = name;
+      document.getElementById("discountedPrice").innerText = price;
+      document.getElementById("totalPrice").innerText = price + deliveryCharge;
+    } else {
+      document.getElementById("productName").innerText = "আপনার নির্বাচিত প্রোডাক্ট";
+      document.getElementById("discountedPrice").innerText = "0";
+      document.getElementById("totalPrice").innerText = "0";
+    }
+  };
   
   function showPopup() {
     const popup = document.getElementById("paymentPopup");
@@ -367,8 +369,11 @@
     e.preventDefault(); // পেজ রিলোড বন্ধ রাখার জন্য
     showPopup();
   });
+ 
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   </script>
+  
   <script src="checkout.js"></script>
 
 </body>
