@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card {
+      text-align: center;
+      padding: 40px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 2s ease-in-out;
+      position: relative;
+      z-index: 2;
+      max-width: 90vw;
+      width: 500px;
+    }
+
+    .typing {
+      font-size: 1.5rem;
+      color: #ff4081;
+      height: 50px;
+      margin-bottom: 20px;
+      border-right: 2px solid #ff4081;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .card button {
+      padding: 10px 25px;
+      border: none;
+      background: #ff4081;
+      color: white;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .card button:hover {
+      background: #e73370;
+      transform: scale(1.05);
+    }
+
+    .slider {
+      display: none;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .slider img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease;
+    }
+
+    /* Birthday Cake */
+    .cake {
+      margin-top: 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    .cake .plate {
+      width: 200px;
+      height: 20px;
+      background: #ddd;
+      border-radius: 10px;
+      margin: 0 auto;
+    }
+
+    .cake .cake-body {
+      width: 150px;
+      height: 100px;
+      background: #ff4081;
+      margin: 0 auto;
+      border-radius: 10px 10px 0 0;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .cake .candle {
+      width: 10px;
+      height: 30px;
+      background: white;
+      position: absolute;
+      left: 50%;
+      top: -30px;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .cake .flame {
+      width: 10px;
+      height: 10px;
+      background: gold;
+      border-radius: 50%;
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: flicker 0.3s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+      100% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: gold;
+      animation: fall 3s infinite;
+      z-index: 1;
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100vh) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Music -->
+  <video autoplay loop muted hidden>
+    <source src="music1.mp4" type="video/mp4">
+  </video>
+
+  
+
+  <!-- Birthday Card -->
+  <div class="card">
+    <div class="typing" id="typing-text">🎉 Happy Birthday to Sinthila! 🎂</div>
+    <button onclick="showSlider()">🎉 Celebrate Your Birthday</button>
+
+    <!-- Image Slider -->
+    <div class="slider" id="photo-slider">
+      <img id="slider-img" src="pic1.jpeg" alt="Birthday Moment">
+    </div>
+
+    <!-- Birthday Cake -->
+    <div class="cake">
+      <div class="plate"></div>
+      <div class="cake-body">
+        <div class="candle">
+          <div class="flame"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confetti Animation -->
+  <script>
+    // Generate confetti
+    for (let i = 0; i < 60; i++) {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      confetti.style.animationDuration = Math.random() * 2 + 3 + "s";
+      confetti.style.animationDelay = Math.random() * 3 + "s";
+      document.body.appendChild(confetti);
+    }
+
+    // Image Slider Logic
+    const photos = ["pic1.jpeg", "pic2.jpeg", "pic3.jpeg"];
+    let current = 0;
+
+    function showSlider() {
+      const slider = document.getElementById("photo-slider");
+      const img = document.getElementById("slider-img");
+
+      if (slider.style.display !== "block") {
+        slider.style.display = "block";
+        setInterval(() => {
+          current = (current + 1) % photos.length;
+          img.src = photos[current];
+        }, 3000); // Change every 3s
+      }
+    }
+  </script>
+</body>
+</html>
