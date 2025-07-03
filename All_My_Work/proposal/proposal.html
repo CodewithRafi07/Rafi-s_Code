@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposal Card</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .page {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      background: #e6ccff; /* light purple */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: left 1s ease-in-out;
+    }
+
+    .page.active {
+      left: 0;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+    }
+
+    .typewriter {
+  font-size: 28px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid transparent;
+}
+
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .neon-box {
+      border: 3px solid;
+      padding: 30px;
+      border-radius: 20px;
+      animation: bordercolor 2s infinite;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    @keyframes bordercolor {
+      0% { border-color: #f0f; }
+      25% { border-color: #0ff; }
+      50% { border-color: #ff0; }
+      75% { border-color: #0f0; }
+      100% { border-color: #f0f; }
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: 2px solid yellow;
+      background: transparent;
+      color: white;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: lightyellow;
+      color: black;
+    }
+
+    .cartoon-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .male, .female {
+      position: absolute;
+      bottom: 0;
+      width: 150px;
+    }
+
+    .male {
+      left: -200px;
+      transition: left 3s ease;
+    }
+
+    .male.active {
+      left: 25%;
+    }
+
+    .female {
+      right: 25%;
+    }
+
+    .love-text {
+      position: absolute;
+      top: 30%;
+      left: 30%;
+      font-size: 40px;
+      color: red;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    .love-text.active {
+      opacity: 1;
+    }
+    .final-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+.final-image.active {
+  opacity: 1;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Page 1 -->
+  <div class="page active" id="page1">
+    <div class="neon-box">
+      <p id="line1" class="typewriter" style="color: rgba(221, 10, 193, 0.993);"></p>
+     <p id="line2" class="typewriter" style="color: rgba(255, 115, 0);"></p>
+
+
+      <input type="text" id="userName" placeholder="Enter your name">
+      <br>
+      <button onclick="nextPage('page2')">Continue</button>
+    </div>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="page" id="page2">
+    <div class="neon-box">
+      <p style="font-size: 28px; font-weight: bold; color: rgb(173, 36, 36);">SOMETHING SPECIAL FOR MY LADY</p>
+      <button onclick="nextPage('page3')">CLICK TO REVEAL</button>
+    </div>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="page" id="page3">
+    <div class="cartoon-container">
+      <img src="img/img2.jpg" class="male" id="male">
+      <img src="img/img1.jpg" class="female">
+      <div class="love-text" id="loveText">❤️ I LOVE YOU, WILL YOU BE MINE? ❤️</div>
+      <img src="img/nasa.avif" id="finalImage" class="final-image"> //add img
+    </div>
+  </div>
+
+  <script>
+    function nextPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      if (id === 'page3') {
+        setTimeout(() => {
+          document.getElementById('male').classList.add('active');
+          setTimeout(() => {
+  document.getElementById('loveText').classList.add('active');
+  setTimeout(() => {
+    document.getElementById('finalImage').classList.add('active');
+  }, 1500);
+}, 3000);
+
+        }, 500);
+      }
+    }
+
+    // Generate hearts
+    for (let i = 0; i < 30; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(heart);
+    }
+  </script>
+  <script>
+  const text1 = "Before we begin,";
+  const text2 = "What's your name beautiful?";
+  const line1 = document.getElementById("line1");
+  const line2 = document.getElementById("line2");
+
+  let i = 0;
+  function typeFirstLine() {
+    if (i < text1.length) {
+      line1.textContent += text1.charAt(i);
+      i++;
+      setTimeout(typeFirstLine, 70);
+    } else {
+      setTimeout(() => typeSecondLine(), 500);
+    }
+  }
+
+  let j = 0;
+  function typeSecondLine() {
+    if (j < text2.length) {
+      line2.textContent += text2.charAt(j);
+      j++;
+      setTimeout(typeSecondLine, 70);
+    }
+  }
+
+  window.addEventListener('load', typeFirstLine);
+</script>
+
+</body>
+</html>
