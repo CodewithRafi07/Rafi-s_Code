@@ -335,12 +335,18 @@
       window.onload = function () {
     const name = localStorage.getItem("selectedProductName");
     const price = parseFloat(localStorage.getItem("selecteddiscountedPrice"));
+     const image = localStorage.getItem("selectedProductImage");
     const deliveryCharge = 120;
 
     if (name && !isNaN(discountedprice)) {
       document.getElementById("productName").innerText = name;
       document.getElementById("discountedPrice").innerText = price;
       document.getElementById("totalPrice").innerText = price + deliveryCharge;
+
+      // Update top section
+    document.getElementById("product-name").innerText = name;
+    document.getElementById("product-price").innerText = `Tk ${price}`;
+    document.getElementById("product-image").src = image || "default.jpg";
     } else {
       document.getElementById("productName").innerText = "আপনার নির্বাচিত প্রোডাক্ট";
       document.getElementById("discountedPrice").innerText = "0";
@@ -377,4 +383,4 @@
   <script src="checkout.js"></script>
 
 </body>
-</html>
+</html

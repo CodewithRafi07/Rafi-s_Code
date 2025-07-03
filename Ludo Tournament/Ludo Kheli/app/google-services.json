@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "586472909987",
+    "firebase_url": "https://ludo-tournament-1d9ac-default-rtdb.firebaseio.com",
+    "project_id": "ludo-tournament-1d9ac",
+    "storage_bucket": "ludo-tournament-1d9ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586472909987:android:8d9558a9120d5768572316",
+        "android_client_info": {
+          "package_name": "com.ludo.tournamentbd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586472909987-9elrouj2ru8garh9e6446nr5ku487s9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-yPimjqyMJfABCokrTl8IgxMI90csctY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586472909987-9elrouj2ru8garh9e6446nr5ku487s9s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

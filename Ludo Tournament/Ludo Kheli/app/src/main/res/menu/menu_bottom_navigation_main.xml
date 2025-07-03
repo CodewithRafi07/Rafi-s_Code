@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_game"
+        android:icon="@drawable/ic_game"
+        android:title="Play Game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <item
+        android:id="@+id/navigation_leaderboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/ic_help"
+        android:menuCategory="container"
+        android:title="কিভাবে খেললেন?" />
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/ic_wallet_small"
+        android:title="Wallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</menu>

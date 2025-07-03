@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context=".activity.MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="25dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:visibility="visible"
+        app:contentInsetEnd="0.0dip"
+        app:contentInsetLeft="0.0dip"
+        app:contentInsetRight="0.0dip"
+        app:contentInsetStart="0.0dip"
+        app:elevation="0.0dip"
+        app:theme="@style/AppTheme">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/app_icon"
+                android:layout_width="29dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                android:gravity="center_vertical"
+                android:src="@drawable/app_icon" />
+
+            <TextView
+                android:id="@+id/app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8.0dip"
+                android:layout_marginRight="8.0dip"
+                android:layout_toEndOf="@id/app_icon"
+                android:gravity="center_vertical"
+                android:text="@string/app_name"
+                android:textColor="#ffffffff"
+                android:textSize="18.sp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/notificationFl"
+                style="?attr/actionButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_vertical"
+                android:clipToPadding="false"
+                android:focusable="true"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/ic_push_notification" />
+
+                <TextView
+                    android:id="@+id/counterTv"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="right|end|top"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:background="@drawable/bage_square"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:padding="0dp"
+                    android:text="0"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/navigationView"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="-4dp"
+        android:layout_marginBottom="4dp">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_gravity="bottom|center|right|center_vertical"
+            android:background="#00435BD4"
+            android:drawingCacheQuality="auto"
+            android:foreground="@drawable/whatsapp"
+            android:textColor="#0027FF"
+            android:typeface="normal" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_gravity="bottom|center_vertical"
+            android:background="#00435BD4"
+            android:drawingCacheQuality="auto"
+            android:visibility="gone"
+            android:foreground="@drawable/tele"
+            android:textColor="#0027FF" />
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="#FCFFFFFF"
+        app:itemTextColor="#FF0000"
+        app:menu="@menu/menu_bottom_navigation_main" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

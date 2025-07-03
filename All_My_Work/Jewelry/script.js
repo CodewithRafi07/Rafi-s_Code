@@ -22,6 +22,47 @@ const observer = new IntersectionObserver(entries => {
 // Observing each fader element
 faders.forEach(fader => observer.observe(fader));
 
+function addToCartAndRedirect(event) {
+    const button = event.target;
+    const productCard = button.closest('.product-card');
+
+    if (productCard) {
+        const nameElement = productCard.querySelector('.product-name');
+        const priceElement = productCard.querySelector('.discounted-price');
+        const imageElement = productCard.querySelector('img');
+
+        if (nameElement && priceElement && imageElement) {
+            const name = nameElement.innerText;
+            const price = priceElement.innerText;
+            const image = imageElement.getAttribute('src');
+
+            // Get or initialize cart
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Add current product
+            const newProduct = { name, price, image };
+            cart.push(newProduct);
+
+            // Save updated cart
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Redirect to add to cart page
+            window.location.href = 'addtocart.html'; // Change to your actual page name
+        } else {
+            console.error("Missing product details.");
+        }
+    }
+}
+
+// Attach to all Add To Cart buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const addCartButtons = document.querySelectorAll('.add-to-cart-button');
+    addCartButtons.forEach(button => {
+        button.addEventListener('click', addToCartAndRedirect);
+    });
+});
+
+
 function goToCheckout(button) {
     const productCard = button.closest('.product-card');
     if (productCard) {

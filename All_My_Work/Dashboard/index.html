@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Finance Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-logo"></div>
+          <h2>FinancePro</h2>
+        </div>
+
+        <div class="sidebar-section">Overview</div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <span class="icon dashboard-icon"></span>
+              <span class="label">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="icon wallet-icon"></span>
+              <span class="label">My Accounts</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="icon transactions-icon"></span>
+              <span class="label">Transactions</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-divider"></div>
+
+        <div class="sidebar-section">Management</div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="icon investments-icon"></span>
+              <span class="label">Investments</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="icon analytics-icon"></span>
+              <span class="label">Analytics</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="icon savings-icon"></span>
+              <span class="label">Budgeting</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-divider"></div>
+
+        <div class="sidebar-section">Settings</div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="icon settings-icon"></span>
+              <span class="label">Settings</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="user-profile">
+          <div class="user-avatar">JD</div>
+          <div class="user-info">
+            <div class="user-name">John Doe</div>
+            <div class="user-role">Premium Account</div>
+          </div>
+          <div class="user-menu">⋮</div>
+        </div>
+      </aside>
+
+      <div class="overlay"></div>
+      <button class="menu-toggle">☰</button>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="page-header">
+          <div>
+            <h1 class="page-title">Financial Dashboard</h1>
+            <p class="page-subtitle">
+              Keep track of your financial health and transactions
+            </p>
+          </div>
+          <div class="header-actions">
+            <div class="search-box">
+              <span class="search-icon"></span>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Search for transactions..."
+              />
+            </div>
+            <div class="notification-wrapper">
+              <button class="btn btn-secondary">
+                <span class="icon notification-icon"></span>
+                <span class="badge">3</span>
+              </button>
+            </div>
+            <button class="btn btn-primary">
+              <span class="icon add-icon"></span>
+              New Transaction
+            </button>
+          </div>
+        </header>
+
+        <div class="dashboard-grid">
+          <div class="card">
+            <div class="gradient-overlay gradient-primary"></div>
+            <div class="card-header">
+              <h3 class="card-title">Total Balance</h3>
+              <div class="card-icon icon-primary">
+                <span class="icon money-icon"></span>
+              </div>
+            </div>
+            <div class="card-value">$24,562.00</div>
+            <div class="card-change">
+              <span class="positive">↑ 5.2%</span> from last month
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="gradient-overlay gradient-success"></div>
+            <div class="card-header">
+              <h3 class="card-title">Income</h3>
+              <div class="card-icon icon-success">
+                <span class="icon income-icon"></span>
+              </div>
+            </div>
+            <div class="card-value">$8,942.00</div>
+            <div class="card-change">
+              <span class="positive">↑ 2.5%</span> from last month
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="gradient-overlay gradient-danger"></div>
+            <div class="card-header">
+              <h3 class="card-title">Expenses</h3>
+              <div class="card-icon icon-danger">
+                <span class="icon expense-icon"></span>
+              </div>
+            </div>
+            <div class="card-value">$5,325.00</div>
+            <div class="card-change">
+              <span class="negative">↑ 1.8%</span> from last month
+            </div>
+          </div>
+
+          <div class="card chart-container">
+            <div class="chart-header">
+              <div class="chart-tabs">
+                <div class="chart-tab active">Monthly</div>
+                <div class="chart-tab">Quarterly</div>
+                <div class="chart-tab">Yearly</div>
+              </div>
+            </div>
+            <svg
+              viewBox="0 0 800 300"
+              xmlns="http://www.w3.org/2000/svg"
+              style="width: 100%; height: 300px"
+            >
+              <!-- Grid Lines -->
+              <line
+                x1="50"
+                y1="250"
+                x2="750"
+                y2="250"
+                stroke="#f1f5f9"
+                stroke-width="1"
+              />
+              <line
+                x1="50"
+                y1="200"
+                x2="750"
+                y2="200"
+                stroke="#f1f5f9"
+                stroke-width="1"
+              />
+              <line
+                x1="50"
+                y1="150"
+                x2="750"
+                y2="150"
+                stroke="#f1f5f9"
+                stroke-width="1"
+              />
+              <line
+                x1="50"
+                y1="100"
+                x2="750"
+                y2="100"
+                stroke="#f1f5f9"
+                stroke-width="1"
+              />
+              <line
+                x1="50"
+                y1="50"
+                x2="750"
+                y2="50"
+                stroke="#f1f5f9"
+                stroke-width="1"
+              />
+
+              <defs>
+                <linearGradient
+                  id="incomeGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="0%"
+                  y2="100%"
+                >
+                  <stop
+                    offset="0%"
+                    style="stop-color: #10b981; stop-opacity: 0.3"
+                  />
+                  <stop
+                    offset="100%"
+                    style="stop-color: #10b981; stop-opacity: 0"
+                  />
+                </linearGradient>
+              </defs>
+
+              <path
+                d="M 50 160 
+                                L 152 140 
+                                L 254 150 
+                                L 356 120 
+                                L 458 100 
+                                L 560 90 
+                                L 662 70 
+                                L 750 60
+                                L 750 250 
+                                L 50 250 Z"
+                fill="url(#incomeGradient)"
+              />
+
+              <path
+                d="M 50 160 
+                                L 152 140 
+                                L 254 150 
+                                L 356 120 
+                                L 458 100 
+                                L 560 90 
+                                L 662 70 
+                                L 750 60"
+                fill="none"
+                stroke="#10b981"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <circle cx="50" cy="160" r="5" fill="#10b981" />
+              <circle cx="152" cy="140" r="5" fill="#10b981" />
+              <circle cx="254" cy="150" r="5" fill="#10b981" />
+              <circle cx="356" cy="120" r="5" fill="#10b981" />
+              <circle cx="458" cy="100" r="5" fill="#10b981" />
+              <circle cx="560" cy="90" r="5" fill="#10b981" />
+              <circle cx="662" cy="70" r="5" fill="#10b981" />
+              <circle cx="750" cy="60" r="5" fill="#10b981" />
+
+              <defs>
+                <linearGradient
+                  id="expenseGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="0%"
+                  y2="100%"
+                >
+                  <stop
+                    offset="0%"
+                    style="stop-color: #ef4444; stop-opacity: 0.3"
+                  />
+                  <stop
+                    offset="100%"
+                    style="stop-color: #ef4444; stop-opacity: 0"
+                  />
+                </linearGradient>
+              </defs>
+
+              <path
+                d="M 50 200 
+                                L 152 190 
+                                L 254 210 
+                                L 356 180 
+                                L 458 170 
+                                L 560 180 
+                                L 662 150 
+                                L 750 160
+                                L 750 250 
+                                L 50 250 Z"
+                fill="url(#expenseGradient)"
+              />
+
+              <path
+                d="M 50 200 
+                                L 152 190 
+                                L 254 210 
+                                L 356 180 
+                                L 458 170 
+                                L 560 180 
+                                L 662 150 
+                                L 750 160"
+                fill="none"
+                stroke="#ef4444"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <circle cx="50" cy="200" r="5" fill="#ef4444" />
+              <circle cx="152" cy="190" r="5" fill="#ef4444" />
+              <circle cx="254" cy="210" r="5" fill="#ef4444" />
+              <circle cx="356" cy="180" r="5" fill="#ef4444" />
+              <circle cx="458" cy="170" r="5" fill="#ef4444" />
+              <circle cx="560" cy="180" r="5" fill="#ef4444" />
+              <circle cx="662" cy="150" r="5" fill="#ef4444" />
+              <circle cx="750" cy="160" r="5" fill="#ef4444" />
+
+              <text
+                x="50"
+                y="275"
+                text-anchor="middle"
+                font-size="12"
+                fill="#6b7280"
+              >
+                Jan
+              </text>
+              <text
+                x="152"
+                y="275"
+                text-anchor="middle"
+                font-size="12"
+                fill="#6b7280"
+              >
+                Feb
+              </text>
+              <text
+                x="254"
+                y="275"
+                text-anchor="middle"
+                font-size="12"
+                fill="#6b7280"
+              >
+                Mar
+              </text>
+              <text
+                x="356"
+                y="275"
+                text-anchor="middle"
+                font-size="12"
+                fill="#6b7280"
+              >
+                Apr
+              </text>
+              <text
+                x="458"
+                y="275"
+                text-anchor="middle"
+                font-size="12"
+                fill="#6b7280"
+              >
+                May
+              </text>
+              <text
+                x="560"
+                y="275"
+                text-anchor="middle"
+                font-size="12"
+                fill="#6b7280"
+              >
+                Jun
+              </text>
+              <text
+                x="662"
+                y="275"
+                text-anchor="middle"
+                font-size="12"
+                fill="#6b7280"
+              >
+                Jul
+              </text>
+              <text
+                x="750"
+                y="275"
+                text-anchor="middle"
+                font-size="12"
+                fill="#6b7280"
+              >
+                Aug
+              </text>
+
+              <text
+                x="35"
+                y="250"
+                text-anchor="end"
+                font-size="12"
+                fill="#6b7280"
+              >
+                $0k
+              </text>
+              <text
+                x="35"
+                y="200"
+                text-anchor="end"
+                font-size="12"
+                fill="#6b7280"
+              >
+                $2k
+              </text>
+              <text
+                x="35"
+                y="150"
+                text-anchor="end"
+                font-size="12"
+                fill="#6b7280"
+              >
+                $4k
+              </text>
+              <text
+                x="35"
+                y="100"
+                text-anchor="end"
+                font-size="12"
+                fill="#6b7280"
+              >
+                $6k
+              </text>
+              <text
+                x="35"
+                y="50"
+                text-anchor="end"
+                font-size="12"
+                fill="#6b7280"
+              >
+                $8k
+              </text>
+
+              <!-- Legend -->
+              <circle cx="650" cy="30" r="5" fill="#10b981" />
+              <text
+                x="660"
+                y="35"
+                font-size="14"
+                fill="#111827"
+                font-weight="500"
+              >
+                Income
+              </text>
+              <circle cx="730" cy="30" r="5" fill="#ef4444" />
+              <text
+                x="740"
+                y="35"
+                font-size="14"
+                fill="#111827"
+                font-weight="500"
+              >
+                Expenses
+              </text>
+            </svg>
+          </div>
+
+          <div class="card transactions">
+            <div class="card-header">
+              <h3 class="card-title">Recent Transactions</h3>
+              <a href="#" class="view-all"
+                >View All <span class="icon arrow-right"></span
+              ></a>
+            </div>
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>TRANSACTION</th>
+                    <th>CATEGORY</th>
+                    <th>DATE</th>
+                    <th>AMOUNT</th>
+                    <th>STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="transaction-user">
+                        <div class="transaction-icon rent">🏠</div>
+                        <div class="transaction-details">
+                          <div class="transaction-name">Monthly Rent</div>
+                          <div class="transaction-date">11:15 AM</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Housing</td>
+                    <td>Mar 15, 2025</td>
+                    <td>
+                      <span class="amount amount-negative">-$1,500.00</span>
+                    </td>
+                    <td>
+                      <span class="status status-completed">Completed</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="transaction-user">
+                        <div class="transaction-icon salary">💼</div>
+                        <div class="transaction-details">
+                          <div class="transaction-name">Salary Deposit</div>
+                          <div class="transaction-date">09:32 AM</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Income</td>
+                    <td>Mar 10, 2025</td>
+                    <td>
+                      <span class="amount amount-positive">+$4,300.00</span>
+                    </td>
+                    <td>
+                      <span class="status status-completed">Completed</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="transaction-user">
+                        <div class="transaction-icon subscription">📺</div>
+                        <div class="transaction-details">
+                          <div class="transaction-name">
+                            Netflix Subscription
+                          </div>
+                          <div class="transaction-date">06:11 PM</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Entertainment</td>
+                    <td>Mar 08, 2025</td>
+                    <td><span class="amount amount-negative">-$14.99</span></td>
+                    <td>
+                      <span class="status status-completed">Completed</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="transaction-user">
+                        <div class="transaction-icon grocery">🛒</div>
+                        <div class="transaction-details">
+                          <div class="transaction-name">Grocery Shopping</div>
+                          <div class="transaction-date">03:45 PM</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Food</td>
+                    <td>Mar 05, 2025</td>
+                    <td>
+                      <span class="amount amount-negative">-$120.50</span>
+                    </td>
+                    <td>
+                      <span class="status status-completed">Completed</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="transaction-user">
+                        <div class="transaction-icon investment">📊</div>
+                        <div class="transaction-details">
+                          <div class="transaction-name">Stock Investment</div>
+                          <div class="transaction-date">11:36 AM</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Investment</td>
+                    <td>Mar 01, 2025</td>
+                    <td>
+                      <span class="amount amount-negative">-$500.00</span>
+                    </td>
+                    <td><span class="status status-pending">Pending</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics-section">
+          <div class="section-header">
+            <h2 class="section-title">Spending Analytics</h2>
+            <a href="#" class="view-all"
+              >View Detailed Report <span class="icon arrow-right"></span
+            ></a>
+          </div>
+          <div class="dashboard-grid">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Spending by Category</h3>
+              </div>
+              <svg
+                viewBox="0 0 400 200"
+                xmlns="http://www.w3.org/2000/svg"
+                style="width: 100%; height: 200px"
+              >
+                <g transform="translate(100, 100)">
+                  <path
+                    d="M 0 0 L 0 -80 A 80 80 0 0 1 69.28 -40 Z"
+                    fill="#6366f1"
+                  />
+
+                  <path
+                    d="M 0 0 L 69.28 -40 A 80 80 0 0 1 80 0 Z"
+                    fill="#10b981"
+                  />
+
+                  <path
+                    d="M 0 0 L 80 0 A 80 80 0 0 1 40 69.28 Z"
+                    fill="#f59e0b"
+                  />
+
+                  <path
+                    d="M 0 0 L 40 69.28 A 80 80 0 0 1 -27.71 76.05 Z"
+                    fill="#ef4444"
+                  />
+
+                  <path
+                    d="M 0 0 L -27.71 76.05 A 80 80 0 0 1 -80 0 Z"
+                    fill="#8b5cf6"
+                  />
+
+                  <circle cx="0" cy="0" r="50" fill="white" />
+                </g>
+
+                <!-- Legend -->
+                <g transform="translate(220, 40)">
+                  <rect x="0" y="0" width="12" height="12" fill="#6366f1" />
+                  <text x="20" y="10" font-size="12" fill="#111827">
+                    Housing (35%)
+                  </text>
+
+                  <rect x="0" y="25" width="12" height="12" fill="#10b981" />
+                  <text x="20" y="35" font-size="12" fill="#111827">
+                    Food (25%)
+                  </text>
+
+                  <rect x="0" y="50" width="12" height="12" fill="#f59e0b" />
+                  <text x="20" y="60" font-size="12" fill="#111827">
+                    Transportation (15%)
+                  </text>
+
+                  <rect x="0" y="75" width="12" height="12" fill="#ef4444" />
+                  <text x="20" y="85" font-size="12" fill="#111827">
+                    Entertainment (10%)
+                  </text>
+
+                  <rect x="0" y="100" width="12" height="12" fill="#8b5cf6" />
+                  <text x="20" y="110" font-size="12" fill="#111827">
+                    Others (15%)
+                  </text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Savings Goal</h3>
+              </div>
+              <div style="padding: 20px 0">
+                <div style="text-align: center; margin-bottom: 15px">
+                  <div
+                    style="
+                      font-size: 36px;
+                      font-weight: 700;
+                      color: var(--text-primary);
+                    "
+                  >
+                    $8,450
+                  </div>
+                  <div style="color: var(--text-muted); margin-top: 5px">
+                    saved of $10,000 goal
+                  </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div
+                  style="
+                    width: 100%;
+                    height: 10px;
+                    background-color: #f1f5f9;
+                    border-radius: 10px;
+                    margin: 30px 0;
+                  "
+                >
+                  <div
+                    style="
+                      width: 84.5%;
+                      height: 10px;
+                      background: linear-gradient(to right, #6366f1, #8b5cf6);
+                      border-radius: 10px;
+                    "
+                  ></div>
+                </div>
+
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 10px;
+                  "
+                >
+                  <div style="font-weight: 600; color: var(--success)">
+                    84.5% Complete
+                  </div>
+                  <div style="color: var(--text-muted)">$1,550 to go</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Upcoming Bills</h3>
+              </div>
+              <div style="margin-top: 15px">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 12px 0;
+                    border-bottom: 1px solid #f1f5f9;
+                  "
+                >
+                  <div style="display: flex; align-items: center; gap: 12px">
+                    <div
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 12px;
+                        background-color: rgba(239, 68, 68, 0.1);
+                        color: #ef4444;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 18px;
+                      "
+                    >
+                      💳
+                    </div>
+                    <div>
+                      <div style="font-weight: 600; color: var(--text-primary)">
+                        Credit Card
+                      </div>
+                      <div style="font-size: 12px; color: var(--text-muted)">
+                        Due in 3 days
+                      </div>
+                    </div>
+                  </div>
+                  <div style="font-weight: 600; color: var(--text-primary)">
+                    $1,250.00
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 12px 0;
+                    border-bottom: 1px solid #f1f5f9;
+                  "
+                >
+                  <div style="display: flex; align-items: center; gap: 12px">
+                    <div
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 12px;
+                        background-color: rgba(14, 165, 233, 0.1);
+                        color: #0ea5e9;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 18px;
+                      "
+                    >
+                      💧
+                    </div>
+                    <div>
+                      <div style="font-weight: 600; color: var(--text-primary)">
+                        Water & Electricity
+                      </div>
+                      <div style="font-size: 12px; color: var(--text-muted)">
+                        Due in 7 days
+                      </div>
+                    </div>
+                  </div>
+                  <div style="font-weight: 600; color: var(--text-primary)">
+                    $145.50
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 12px 0;
+                  "
+                >
+                  <div style="display: flex; align-items: center; gap: 12px">
+                    <div
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 12px;
+                        background-color: rgba(245, 158, 11, 0.1);
+                        color: #f59e0b;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 18px;
+                      "
+                    >
+                      📱
+                    </div>
+                    <div>
+                      <div style="font-weight: 600; color: var(--text-primary)">
+                        Internet & Phone
+                      </div>
+                      <div style="font-size: 12px; color: var(--text-muted)">
+                        Due in 12 days
+                      </div>
+                    </div>
+                  </div>
+                  <div style="font-weight: 600; color: var(--text-primary)">
+                    $89.99
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const sidebar = document.querySelector(".sidebar");
+        const overlay = document.querySelector(".overlay");
+
+        if (menuToggle && sidebar && overlay) {
+          menuToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("active");
+            overlay.classList.toggle("active");
+          });
+
+          overlay.addEventListener("click", function () {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
