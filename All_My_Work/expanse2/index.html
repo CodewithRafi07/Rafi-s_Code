@@ -1887,16 +1887,7 @@
                 users = JSON.parse(savedUsers);
             } else {
                 // Create default admin user
-                const defaultUser = {
-                    id: 1,
-                    username: 'admin',
-                    email: 'admin@example.com',
-                    password: '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', // SHA256 hash of 'admin123'
-                    fullName: 'Administrator',
-                    profileImage: 'https://picsum.photos/seed/admin/120/120.jpg',
-                    currency: 'BDT'
-                };
-                users.push(defaultUser);
+                user = [];
                 saveUsers();
             }
         }
