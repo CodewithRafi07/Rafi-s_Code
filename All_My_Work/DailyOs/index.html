@@ -99,7 +99,7 @@
     <!-- Footer -->
     <footer class="border-t border-gray-200 dark:border-slate-700 py-6 mt-auto">
         <div class="text-center text-sm text-gray-500 dark:text-gray-400">
-            &copy; 2026 DailyOS Digital Toolbox. Works completely offline.
+            &copy; 2026 DailyOS Digital Toolbox. Powered by GLOWZY.
         </div>
     </footer>
 
@@ -118,27 +118,6 @@
             document.documentElement.classList.toggle('dark');
             localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
         };
-
-        // --- Placeholders for unimplemented tools ---
-        // Moved here to avoid initialization errors before being used in osData array.
-        function renderPlaceholder(title, desc) {
-            return function(container) {
-                container.innerHTML = `
-                    <div class="flex flex-col items-center justify-center h-64 text-center">
-                        <i class="ph ph-wrench text-6xl text-gray-300 dark:text-gray-600 mb-4 animate-pulse"></i>
-                        <h3 class="text-xl font-bold mb-2">${title}</h3>
-                        <p class="text-gray-500 max-w-sm">${desc}</p>
-                        <p class="mt-4 text-xs text-blue-500 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full">Modular structure ready</p>
-                    </div>
-                `;
-            }
-        }
-
-        const renderGPACalc = renderPlaceholder("GPA Calculator", "Add subjects, credits, and grades to compute your semester GPA.");
-        const renderUnitConverter = renderPlaceholder("Unit Converter", "Convert length, weight, temperature, and volume instantly.");
-        const renderSales = renderPlaceholder("Daily Sales Tracker", "Keep a running total of daily shop sales.");
-        const renderMarksCalc = renderPlaceholder("Marks Calculator", "Easily sum up exam marks and find averages for grading.");
-        const renderMoneyTracker = renderPlaceholder("Money Tracker", "Log your daily income and expenses. Data stays safely in local storage.");
 
         // --- Data Structure (Modular system for easy addition) ---
         const osData = [
@@ -600,48 +579,65 @@
             }
         }
 
-        // 8. Simple Invoice Generator (Printable)
+        // 8. Simple Invoice Generator
         function renderInvoice(container) {
             container.innerHTML = `
                 <div class="max-w-3xl mx-auto space-y-6">
                     <div class="no-print space-y-4 mb-8 p-4 bg-gray-50 dark:bg-slate-800 rounded-xl">
-                        <p class="text-sm text-gray-500">Add items and click print. The layout adapts automatically for paper.</p>
+                        <p class="text-sm text-gray-500">Add items and click print or download. The layout adapts automatically.</p>
                         <div class="flex gap-2">
                             <input type="text" id="inv-item" placeholder="Item Name" class="flex-grow p-2 rounded border dark:bg-slate-700 dark:border-slate-600">
                             <input type="number" id="inv-qty" placeholder="Qty" value="1" class="w-20 p-2 rounded border dark:bg-slate-700 dark:border-slate-600">
                             <input type="number" id="inv-price" placeholder="Price" class="w-28 p-2 rounded border dark:bg-slate-700 dark:border-slate-600">
                             <button onclick="addInvoiceItem()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Add</button>
                         </div>
-                        <button onclick="window.print()" class="w-full py-2 bg-gray-800 text-white rounded font-bold hover:bg-gray-900 flex items-center justify-center gap-2"><i class="ph ph-printer"></i> Print Invoice</button>
+                        <div class="flex gap-3 pt-2">
+                            <button onclick="window.print()" class="w-1/2 py-3 bg-gray-800 text-white rounded-lg font-bold hover:bg-gray-900 flex items-center justify-center gap-2 shadow-sm transition-colors"><i class="ph ph-printer"></i> Print</button>
+                            <button onclick="downloadInvoicePDF()" id="btn-dl-invoice" class="w-1/2 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 flex items-center justify-center gap-2 shadow-sm transition-colors"><i class="ph ph-download-simple"></i> Download PDF</button>
+                        </div>
                     </div>
 
                     <!-- Printable Area -->
-                    <div id="print-area" class="bg-white text-black p-8 border rounded-xl min-h-[500px]">
-                        <div class="flex justify-between border-b pb-4 mb-4">
+                    <div id="print-area" class="bg-white text-black p-8 border rounded-xl min-h-[600px] flex flex-col relative">
+                        <div class="flex justify-between border-b-2 border-gray-800 pb-4 mb-6">
                             <div>
-                                <h1 class="text-3xl font-bold uppercase text-gray-800">INVOICE</h1>
-                                <p class="text-gray-500 mt-1">Date: ${new Date().toLocaleDateString()}</p>
+                                <h1 class="text-4xl font-black uppercase text-gray-800 tracking-wider">INVOICE</h1>
+                                <p class="text-gray-500 mt-2 font-medium">Date: ${new Date().toLocaleDateString()}</p>
                             </div>
                             <div class="text-right">
-                                <input type="text" placeholder="Your Shop Name" class="font-bold text-xl text-right outline-none border-b border-dashed border-gray-300 focus:border-blue-500 bg-transparent">
+                                <input type="text" placeholder="Your Shop Name" class="font-bold text-2xl text-right outline-none border-b border-dashed border-gray-300 focus:border-blue-500 bg-transparent text-gray-800 w-full">
                             </div>
                         </div>
-                        <table class="w-full text-left mb-6">
+                        
+                        <table class="w-full text-left mb-6 flex-grow">
                             <thead>
-                                <tr class="border-b bg-gray-50">
-                                    <th class="p-2">Item Description</th>
-                                    <th class="p-2 text-center w-20">Qty</th>
-                                    <th class="p-2 text-right w-24">Price</th>
-                                    <th class="p-2 text-right w-24">Total</th>
+                                <tr class="border-b-2 border-gray-200 bg-gray-50">
+                                    <th class="p-3 font-bold text-gray-700">Item Description</th>
+                                    <th class="p-3 text-center w-20 font-bold text-gray-700">Qty</th>
+                                    <th class="p-3 text-right w-24 font-bold text-gray-700">Price</th>
+                                    <th class="p-3 text-right w-28 font-bold text-gray-700">Total</th>
                                 </tr>
                             </thead>
                             <tbody id="inv-tbody">
                             </tbody>
                         </table>
-                        <div class="flex justify-end pt-4 border-t">
+                        
+                        <div class="flex justify-end pt-4 border-t-2 border-gray-800">
                             <div class="text-right">
-                                <p class="font-bold text-xl">Total: $<span id="inv-total">0.00</span></p>
+                                <p class="text-gray-500 uppercase text-sm font-bold mb-1">Grand Total</p>
+                                <p class="font-extrabold text-3xl text-gray-900">$<span id="inv-total">0.00</span></p>
                             </div>
+                        </div>
+
+                        <!-- Thank You Message -->
+                        <div class="mt-16 pt-8 border-t border-dashed border-gray-300 text-center">
+                            <p class="font-bold text-gray-800 text-xl mb-1">Thank you for your business! 🎉</p>
+                            <p class="text-gray-500 text-sm">Your satisfaction is our priority. Please come again!</p>
+                        </div>
+
+                        <!-- Sponsor Message -->
+                        <div class="mt-16 pt-4 border-t border-dashed border-gray-300 text-right w-full">
+                            <p class="text-gray-400 text-sm font-bold tracking-wide">Sponsored by <span class="text-gray-800">GLOWZY, DailyOS</span></p>
                         </div>
                     </div>
                 </div>
@@ -660,12 +656,12 @@
             window.invoiceTotal += total;
             
             const tr = document.createElement('tr');
-            tr.className = "border-b";
+            tr.className = "border-b border-gray-100";
             tr.innerHTML = `
-                <td class="p-2">${item}</td>
-                <td class="p-2 text-center">${qty}</td>
-                <td class="p-2 text-right">$${price.toFixed(2)}</td>
-                <td class="p-2 text-right">$${total.toFixed(2)}</td>
+                <td class="p-3 text-gray-800 font-medium">${item}</td>
+                <td class="p-3 text-center text-gray-600">${qty}</td>
+                <td class="p-3 text-right text-gray-600">$${price.toFixed(2)}</td>
+                <td class="p-3 text-right font-bold text-gray-800">$${total.toFixed(2)}</td>
             `;
             document.getElementById('inv-tbody').appendChild(tr);
             document.getElementById('inv-total').innerText = window.invoiceTotal.toFixed(2);
@@ -675,7 +671,960 @@
             document.getElementById('inv-price').value = '';
         }
 
-        // 9. Memory Game
+        function downloadInvoicePDF() {
+            const btn = document.getElementById('btn-dl-invoice');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="ph ph-spinner-gap animate-spin"></i> Downloading...';
+            
+            if (typeof window.html2pdf === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+                script.onload = () => generateInvoicePDF(btn, originalText);
+                document.head.appendChild(script);
+            } else {
+                generateInvoicePDF(btn, originalText);
+            }
+        }
+
+        function generateInvoicePDF(btn, originalText) {
+            const printArea = document.getElementById('print-area');
+            const uiArea = printArea.previousElementSibling; 
+            
+            window.scrollTo(0, 0);
+            uiArea.style.display = 'none';
+            
+            // Remove border momentarily for a clean PDF look
+            const originalClasses = printArea.className;
+            printArea.classList.remove('border', 'rounded-xl');
+            
+            const opt = {
+                margin:       0.5,
+                filename:     `Invoice_${new Date().getTime()}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            setTimeout(() => {
+                html2pdf().set(opt).from(printArea).save().then(() => {
+                    uiArea.style.display = '';
+                    printArea.className = originalClasses;
+                    btn.innerHTML = originalText;
+                }).catch(err => {
+                    console.error("PDF generation error: ", err);
+                    btn.innerHTML = "Error!";
+                    uiArea.style.display = '';
+                    printArea.className = originalClasses;
+                    setTimeout(() => btn.innerHTML = originalText, 2000);
+                });
+            }, 300);
+        }
+
+        // 9. Marks Calculator
+        function renderMarksCalc(container) {
+            container.innerHTML = `
+                <div class="max-w-3xl mx-auto relative">
+                    <!-- Interactive UI -->
+                    <div id="marks-ui-area" class="space-y-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Add subjects, maximum marks, and your obtained marks.</p>
+                            <button onclick="addMarksRow()" class="px-4 py-2 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 rounded-lg font-medium hover:brightness-95 flex items-center gap-2 transition-colors"><i class="ph ph-plus"></i> Add Subject</button>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-slate-800 rounded-xl p-4 border border-gray-200 dark:border-slate-700 overflow-x-auto">
+                            <div class="min-w-[500px]">
+                                <div class="grid grid-cols-12 gap-3 mb-2 font-semibold text-sm text-gray-600 dark:text-gray-400 px-2">
+                                    <div class="col-span-5">Subject Name</div>
+                                    <div class="col-span-3 text-center">Total Marks</div>
+                                    <div class="col-span-3 text-center">Marks Obtained</div>
+                                    <div class="col-span-1"></div>
+                                </div>
+                                <div id="marks-rows" class="space-y-3">
+                                    <!-- Rows go here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="calculateMarks()" class="w-full bg-purple-600 text-white py-4 rounded-xl font-bold hover:bg-purple-700 transition-colors text-lg shadow-sm">Calculate Result</button>
+                        
+                        <div id="marks-result-box" class="hidden mt-6 fade-in space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-slate-800 p-6 rounded-xl border border-purple-100 dark:border-slate-700 text-center">
+                                    <p class="text-gray-500 dark:text-gray-400 text-sm font-bold uppercase tracking-wider mb-1">Total Score</p>
+                                    <h3 class="text-3xl font-extrabold text-purple-700 dark:text-purple-400"><span id="marks-obtained">0</span> <span class="text-lg text-gray-400 font-medium">/ <span id="marks-max">0</span></span></h3>
+                                </div>
+                                <div class="bg-blue-50 dark:bg-slate-800 p-6 rounded-xl border border-blue-100 dark:border-slate-700 text-center">
+                                    <p class="text-gray-500 dark:text-gray-400 text-sm font-bold uppercase tracking-wider mb-1">Percentage</p>
+                                    <h3 class="text-3xl font-extrabold text-blue-700 dark:text-blue-400"><span id="marks-percent">0</span>%</h3>
+                                </div>
+                                <div class="bg-green-50 dark:bg-slate-800 p-6 rounded-xl border border-green-100 dark:border-slate-700 text-center">
+                                    <p class="text-gray-500 dark:text-gray-400 text-sm font-bold uppercase tracking-wider mb-1">Grade</p>
+                                    <h3 id="marks-grade" class="text-3xl font-extrabold text-green-700 dark:text-green-400">-</h3>
+                                </div>
+                            </div>
+                            <button onclick="downloadMarksPDF()" id="btn-dl-marks" class="w-full bg-gray-800 text-white py-3 rounded-xl font-bold hover:bg-gray-900 transition-colors flex items-center justify-center gap-2 shadow-sm"><i class="ph ph-download-simple"></i> Download Marksheet PDF</button>
+                        </div>
+                    </div>
+
+                    <!-- Hidden Print Area for Marksheet -->
+                    <div id="marks-print-area" class="hidden bg-white text-black p-8 rounded-xl min-h-[600px] flex-col relative">
+                        <div class="border-b-2 border-gray-800 pb-4 mb-6">
+                            <h1 class="text-4xl font-black uppercase text-gray-800 tracking-wider">Student Marksheet</h1>
+                            <p class="text-gray-500 mt-2 font-medium">Date: ${new Date().toLocaleDateString()}</p>
+                        </div>
+                        
+                        <table class="w-full text-left mb-6 flex-grow">
+                            <thead>
+                                <tr class="border-b-2 border-gray-200 bg-gray-50">
+                                    <th class="p-3 font-bold text-gray-700">Subject Name</th>
+                                    <th class="p-3 text-center font-bold text-gray-700">Total Marks</th>
+                                    <th class="p-3 text-right font-bold text-gray-700">Obtained</th>
+                                </tr>
+                            </thead>
+                            <tbody id="marks-print-tbody">
+                            </tbody>
+                        </table>
+                        
+                        <div class="border-t-2 border-gray-800 pt-6 mt-4 flex justify-between items-center">
+                            <div class="w-1/2">
+                                <p class="text-gray-500 uppercase text-xs font-bold mb-1">Teacher's Remarks</p>
+                                <p id="marks-print-message" class="text-xl font-bold text-blue-600"></p>
+                            </div>
+                            <div class="text-right w-1/2 bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-600 mb-1">Total Score: <span id="marks-print-total-score" class="font-bold text-gray-900"></span></p>
+                                <p class="text-gray-600 mb-1">Percentage: <span id="marks-print-percent-score" class="font-bold text-gray-900"></span>%</p>
+                                <p class="text-xl text-gray-800 mt-2">Final Grade: <span id="marks-print-final-grade" class="font-black text-2xl"></span></p>
+                            </div>
+                        </div>
+
+                        <!-- Sponsor Message -->
+                        <div class="mt-16 pt-4 border-t border-dashed border-gray-300 text-right w-full">
+                            <p class="text-gray-400 text-sm font-bold tracking-wide">Sponsored by <span class="text-gray-800">GLOWZY, DailyOS</span></p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            window.marksRowCount = 0;
+            addMarksRow(); addMarksRow(); addMarksRow(); addMarksRow();
+        }
+
+        function addMarksRow() {
+            const id = window.marksRowCount++;
+            const row = document.createElement('div');
+            row.className = 'grid grid-cols-12 gap-3 items-center marks-row';
+            row.id = `marks-row-${id}`;
+            row.innerHTML = `
+                <div class="col-span-5">
+                    <input type="text" placeholder="Subject ${id+1}" class="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-purple-500 transition-colors marks-subj">
+                </div>
+                <div class="col-span-3">
+                    <input type="number" min="0" value="100" class="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-purple-500 text-center marks-max transition-colors">
+                </div>
+                <div class="col-span-3">
+                    <input type="number" min="0" placeholder="e.g. 85" class="w-full p-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-purple-500 text-center marks-obt font-bold transition-colors">
+                </div>
+                <div class="col-span-1 flex justify-center">
+                    <button onclick="document.getElementById('marks-row-${id}').remove()" class="text-red-500 hover:text-red-700 p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"><i class="ph ph-trash text-lg"></i></button>
+                </div>
+            `;
+            document.getElementById('marks-rows').appendChild(row);
+        }
+
+        function calculateMarks() {
+            const rows = document.querySelectorAll('.marks-row');
+            let totalMax = 0;
+            let totalObt = 0;
+            let printTbody = '';
+            
+            rows.forEach(row => {
+                const subj = row.querySelector('.marks-subj').value || 'Unnamed Subject';
+                const maxInp = parseFloat(row.querySelector('.marks-max').value);
+                const obtInp = parseFloat(row.querySelector('.marks-obt').value);
+                
+                if(!isNaN(maxInp) && !isNaN(obtInp)) {
+                    totalMax += maxInp;
+                    totalObt += obtInp;
+                    
+                    printTbody += `
+                        <tr class="border-b border-gray-100">
+                            <td class="p-3 text-gray-800 font-medium">${subj}</td>
+                            <td class="p-3 text-center text-gray-600">${maxInp}</td>
+                            <td class="p-3 text-right font-bold text-gray-800">${obtInp}</td>
+                        </tr>
+                    `;
+                }
+            });
+            
+            if(totalMax === 0) return alert("Please enter valid marks.");
+            if(totalObt > totalMax) return alert("Obtained marks cannot be greater than Total marks.");
+            
+            const percent = (totalObt / totalMax) * 100;
+            let grade = "F";
+            let remarkMsg = "";
+            
+            if (percent >= 80) { grade = "A+"; remarkMsg = "Outstanding performance! You are brilliant! 🎉"; }
+            else if (percent >= 70) { grade = "A"; remarkMsg = "Excellent work! Keep it up! 🌟"; }
+            else if (percent >= 60) { grade = "A-"; remarkMsg = "Very good! You're doing great! 👍"; }
+            else if (percent >= 50) { grade = "B"; remarkMsg = "Good job! Effort can make it better! 💪"; }
+            else if (percent >= 40) { grade = "C"; remarkMsg = "Fair performance. You can improve! 📚"; }
+            else if (percent >= 33) { grade = "D"; remarkMsg = "You passed, but need to work harder! 🧗"; }
+            else { remarkMsg = "Don't give up! Failures are the pillars of success! ❤️"; }
+
+            // Update UI
+            document.getElementById('marks-obtained').innerText = totalObt;
+            document.getElementById('marks-max').innerText = totalMax;
+            document.getElementById('marks-percent').innerText = percent.toFixed(2);
+            document.getElementById('marks-grade').innerText = grade;
+            
+            // Update Print Area
+            document.getElementById('marks-print-tbody').innerHTML = printTbody;
+            document.getElementById('marks-print-total-score').innerText = `${totalObt} / ${totalMax}`;
+            document.getElementById('marks-print-percent-score').innerText = percent.toFixed(2);
+            document.getElementById('marks-print-final-grade').innerText = grade;
+            document.getElementById('marks-print-message').innerText = remarkMsg;
+            
+            document.getElementById('marks-result-box').classList.remove('hidden');
+        }
+
+        function downloadMarksPDF() {
+            const btn = document.getElementById('btn-dl-marks');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="ph ph-spinner-gap animate-spin"></i> Downloading...';
+            
+            if (typeof window.html2pdf === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+                script.onload = () => generateMarksPDF(btn, originalText);
+                document.head.appendChild(script);
+            } else {
+                generateMarksPDF(btn, originalText);
+            }
+        }
+
+        function generateMarksPDF(btn, originalText) {
+            const printArea = document.getElementById('marks-print-area');
+            const uiArea = document.getElementById('marks-ui-area'); 
+            
+            window.scrollTo(0, 0);
+            uiArea.style.display = 'none';
+            printArea.classList.remove('hidden');
+            printArea.classList.add('flex'); // necessary for flex-col styling
+            
+            const opt = {
+                margin:       0.5,
+                filename:     `Marksheet_${new Date().getTime()}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            setTimeout(() => {
+                html2pdf().set(opt).from(printArea).save().then(() => {
+                    uiArea.style.display = '';
+                    printArea.classList.remove('flex');
+                    printArea.classList.add('hidden');
+                    btn.innerHTML = originalText;
+                }).catch(err => {
+                    console.error("PDF generation error: ", err);
+                    btn.innerHTML = "Error!";
+                    uiArea.style.display = '';
+                    printArea.classList.remove('flex');
+                    printArea.classList.add('hidden');
+                    setTimeout(() => btn.innerHTML = originalText, 2000);
+                });
+            }, 300);
+        }
+
+        // 10. Money Tracker
+        function renderMoneyTracker(container) {
+            container.innerHTML = `
+                <div class="max-w-3xl mx-auto relative">
+                    <!-- Interactive UI -->
+                    <div id="mt-ui-area" class="space-y-6">
+                        <!-- Dashboard Cards -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="bg-blue-600 dark:bg-blue-700 text-white p-6 rounded-2xl shadow-sm text-center relative overflow-hidden">
+                                <div class="absolute -right-2 -top-2 opacity-20"><i class="ph ph-wallet text-7xl"></i></div>
+                                <p class="text-blue-100 text-sm font-medium mb-1 relative z-10">Current Balance</p>
+                                <h3 class="text-3xl font-bold relative z-10">$<span id="mt-balance">0.00</span></h3>
+                            </div>
+                            <div class="bg-green-600 dark:bg-green-700 text-white p-6 rounded-2xl shadow-sm text-center relative overflow-hidden">
+                                <div class="absolute -right-2 -top-2 opacity-20"><i class="ph ph-trend-up text-7xl"></i></div>
+                                <p class="text-green-100 text-sm font-medium mb-1 relative z-10">Total Income</p>
+                                <h3 class="text-3xl font-bold relative z-10">$<span id="mt-income">0.00</span></h3>
+                            </div>
+                            <div class="bg-red-600 dark:bg-red-700 text-white p-6 rounded-2xl shadow-sm text-center relative overflow-hidden">
+                                <div class="absolute -right-2 -top-2 opacity-20"><i class="ph ph-trend-down text-7xl"></i></div>
+                                <p class="text-red-100 text-sm font-medium mb-1 relative z-10">Total Expense</p>
+                                <h3 class="text-3xl font-bold relative z-10">$<span id="mt-expense">0.00</span></h3>
+                            </div>
+                        </div>
+
+                        <!-- Add Transaction Form -->
+                        <div class="bg-gray-100 dark:bg-slate-800 p-4 rounded-2xl border border-gray-200 dark:border-slate-700 flex flex-col md:flex-row gap-3">
+                            <input type="text" id="mt-desc" class="flex-grow p-3.5 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Description (e.g., Salary, Groceries)">
+                            <input type="number" id="mt-amount" class="w-full md:w-32 p-3.5 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Amount ($)">
+                            <select id="mt-type" class="w-full md:w-40 p-3.5 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500 font-medium cursor-pointer">
+                                <option value="income">Income (+)</option>
+                                <option value="expense">Expense (-)</option>
+                            </select>
+                            <button onclick="addMoneyTransaction()" class="bg-blue-600 text-white px-6 py-3.5 rounded-xl font-bold hover:bg-blue-700 transition-colors whitespace-nowrap shadow-sm">Add</button>
+                        </div>
+
+                        <!-- History List -->
+                        <div>
+                            <div class="flex justify-between items-center mb-3 px-2">
+                                <span class="text-gray-600 dark:text-gray-300 font-bold">Recent Transactions</span>
+                                <div class="flex gap-4">
+                                    <button onclick="downloadMoneyPDF()" id="btn-dl-money" class="text-sm flex items-center gap-1 text-blue-600 dark:text-blue-400 hover:underline"><i class="ph ph-download-simple"></i> Download PDF</button>
+                                    <button onclick="clearMoneyTransactions()" class="text-sm text-red-500 hover:text-red-700 hover:underline">Clear History</button>
+                                </div>
+                            </div>
+                            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 overflow-hidden shadow-sm">
+                                <ul id="mt-list" class="divide-y divide-gray-100 dark:divide-slate-700 max-h-80 overflow-y-auto">
+                                    <!-- Transactions injected here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hidden Print Area for Money Tracker -->
+                    <div id="mt-print-area" class="hidden bg-white text-black p-8 rounded-xl min-h-[600px] flex-col relative">
+                        <div class="border-b-2 border-gray-800 pb-4 mb-6">
+                            <h1 class="text-4xl font-black uppercase text-gray-800 tracking-wider">Financial Report</h1>
+                            <p class="text-gray-500 mt-2 font-medium">Generated: ${new Date().toLocaleString()}</p>
+                        </div>
+
+                        <div class="flex justify-between mb-8 bg-gray-50 p-6 rounded-xl border border-gray-200">
+                            <div class="text-center"><p class="text-sm text-gray-500 font-bold uppercase">Total Income</p><p class="font-black text-green-600 text-2xl" id="mt-print-income"></p></div>
+                            <div class="text-center"><p class="text-sm text-gray-500 font-bold uppercase">Total Expense</p><p class="font-black text-red-600 text-2xl" id="mt-print-expense"></p></div>
+                            <div class="text-center"><p class="text-sm text-gray-500 font-bold uppercase">Net Balance</p><p class="font-black text-blue-600 text-2xl" id="mt-print-balance"></p></div>
+                        </div>
+                        
+                        <table class="w-full text-left mb-6 flex-grow">
+                            <thead>
+                                <tr class="border-b-2 border-gray-200 bg-gray-50">
+                                    <th class="p-3 font-bold text-gray-700">Date & Time</th>
+                                    <th class="p-3 font-bold text-gray-700">Description</th>
+                                    <th class="p-3 text-center font-bold text-gray-700">Type</th>
+                                    <th class="p-3 text-right font-bold text-gray-700">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mt-print-tbody">
+                            </tbody>
+                        </table>
+                        
+                        <!-- Sponsor Message -->
+                        <div class="mt-16 pt-4 border-t border-dashed border-gray-300 text-right w-full">
+                            <p class="text-gray-400 text-sm font-bold tracking-wide">Sponsored by <span class="text-gray-800">GLOWZY, DailyOS</span></p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            loadMoneyTransactions();
+        }
+
+        function loadMoneyTransactions() {
+            const data = JSON.parse(localStorage.getItem('dailyos_money') || '[]');
+            const list = document.getElementById('mt-list');
+            let income = 0;
+            let expense = 0;
+            let printTbody = '';
+            
+            list.innerHTML = '';
+            
+            if(data.length === 0) {
+                list.innerHTML = `<li class="p-8 text-center text-gray-500 dark:text-gray-400">No transactions recorded yet.</li>`;
+                printTbody = `<tr><td colspan="4" class="p-4 text-center text-gray-500">No transaction data available</td></tr>`;
+            } else {
+                data.forEach((item, index) => {
+                    if(item.type === 'income') income += item.amount;
+                    else expense += item.amount;
+                    
+                    const isIncome = item.type === 'income';
+                    const iconClass = isIncome ? 'ph-arrow-down-left text-green-500 bg-green-100 dark:bg-green-900/30' : 'ph-arrow-up-right text-red-500 bg-red-100 dark:bg-red-900/30';
+                    const amountColor = isIncome ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400';
+                    const amountPrintColor = isIncome ? 'text-green-600' : 'text-red-600';
+                    const sign = isIncome ? '+' : '-';
+                    
+                    // UI List
+                    list.innerHTML += `
+                        <li class="flex items-center justify-between p-4 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full flex items-center justify-center ${iconClass}">
+                                    <i class="ph ${iconClass.split(' ')[0]} text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-800 dark:text-gray-200">${item.desc}</p>
+                                    <p class="text-xs text-gray-500 flex items-center gap-1 mt-0.5"><i class="ph ph-calendar-blank"></i> ${item.date}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="font-bold text-lg ${amountColor}">${sign}$${item.amount.toFixed(2)}</span>
+                                <button onclick="deleteMoneyTransaction(${index})" class="text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 p-2 rounded-full transition-colors"><i class="ph ph-trash text-lg"></i></button>
+                            </div>
+                        </li>
+                    `;
+
+                    // Print Table Row
+                    printTbody += `
+                        <tr class="border-b border-gray-100">
+                            <td class="p-3 text-gray-600 text-sm">${item.date}</td>
+                            <td class="p-3 text-gray-800 font-medium">${item.desc}</td>
+                            <td class="p-3 text-center font-bold ${amountPrintColor}">${isIncome ? 'Income' : 'Expense'}</td>
+                            <td class="p-3 text-right font-bold ${amountPrintColor}">${sign}$${item.amount.toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+            }
+            
+            const balance = income - expense;
+            
+            // Update UI
+            document.getElementById('mt-income').innerText = income.toFixed(2);
+            document.getElementById('mt-expense').innerText = expense.toFixed(2);
+            document.getElementById('mt-balance').innerText = balance.toFixed(2);
+
+            // Update Print Area
+            document.getElementById('mt-print-tbody').innerHTML = printTbody;
+            document.getElementById('mt-print-income').innerText = '+$' + income.toFixed(2);
+            document.getElementById('mt-print-expense').innerText = '-$' + expense.toFixed(2);
+            document.getElementById('mt-print-balance').innerText = '$' + balance.toFixed(2);
+        }
+
+        function addMoneyTransaction() {
+            const desc = document.getElementById('mt-desc').value.trim();
+            const amount = parseFloat(document.getElementById('mt-amount').value);
+            const type = document.getElementById('mt-type').value;
+            
+            if(!desc) return alert("Please enter a description.");
+            if(isNaN(amount) || amount <= 0) return alert("Please enter a valid amount.");
+            
+            const data = JSON.parse(localStorage.getItem('dailyos_money') || '[]');
+            const now = new Date();
+            
+            data.unshift({
+                desc: desc,
+                amount: amount,
+                type: type,
+                date: now.toLocaleDateString() + ' ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            });
+            
+            localStorage.setItem('dailyos_money', JSON.stringify(data));
+            
+            document.getElementById('mt-desc').value = '';
+            document.getElementById('mt-amount').value = '';
+            document.getElementById('mt-desc').focus();
+            
+            loadMoneyTransactions();
+        }
+
+        function deleteMoneyTransaction(index) {
+            if(!confirm("Delete this transaction?")) return;
+            const data = JSON.parse(localStorage.getItem('dailyos_money') || '[]');
+            data.splice(index, 1);
+            localStorage.setItem('dailyos_money', JSON.stringify(data));
+            loadMoneyTransactions();
+        }
+
+        function clearMoneyTransactions() {
+            if(!confirm("Are you sure you want to delete ALL transactions? This cannot be undone.")) return;
+            localStorage.removeItem('dailyos_money');
+            loadMoneyTransactions();
+        }
+
+        function downloadMoneyPDF() {
+            const btn = document.getElementById('btn-dl-money');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="ph ph-spinner-gap animate-spin"></i> Downloading...';
+            
+            if (typeof window.html2pdf === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+                script.onload = () => generateMoneyPDF(btn, originalText);
+                document.head.appendChild(script);
+            } else {
+                generateMoneyPDF(btn, originalText);
+            }
+        }
+
+        function generateMoneyPDF(btn, originalText) {
+            const printArea = document.getElementById('mt-print-area');
+            const uiArea = document.getElementById('mt-ui-area'); 
+            
+            window.scrollTo(0, 0);
+            uiArea.style.display = 'none';
+            printArea.classList.remove('hidden');
+            printArea.classList.add('flex');
+            
+            const opt = {
+                margin:       0.5,
+                filename:     `Financial_Report_${new Date().getTime()}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            setTimeout(() => {
+                html2pdf().set(opt).from(printArea).save().then(() => {
+                    uiArea.style.display = '';
+                    printArea.classList.remove('flex');
+                    printArea.classList.add('hidden');
+                    btn.innerHTML = originalText;
+                }).catch(err => {
+                    console.error("PDF generation error: ", err);
+                    btn.innerHTML = "Error!";
+                    uiArea.style.display = '';
+                    printArea.classList.remove('flex');
+                    printArea.classList.add('hidden');
+                    setTimeout(() => btn.innerHTML = originalText, 2000);
+                });
+            }, 300);
+        }
+
+        // 11. GPA Calculator
+        function renderGPACalc(container) {
+            container.innerHTML = `
+                <div class="max-w-2xl mx-auto space-y-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Add your courses, credits, and achieved grades.</p>
+                        <button onclick="addGpaRow()" class="px-4 py-2 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-lg font-medium hover:brightness-95 flex items-center gap-2"><i class="ph ph-plus"></i> Add Course</button>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-slate-800 rounded-xl p-4 border border-gray-200 dark:border-slate-700 overflow-x-auto">
+                        <div class="min-w-[400px]">
+                            <div class="grid grid-cols-12 gap-2 mb-2 font-semibold text-sm text-gray-600 dark:text-gray-400 px-2">
+                                <div class="col-span-6">Course Name</div>
+                                <div class="col-span-2 text-center">Credits</div>
+                                <div class="col-span-3 text-center">Grade</div>
+                                <div class="col-span-1"></div>
+                            </div>
+                            <div id="gpa-rows" class="space-y-3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="calculateGPA()" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors">Calculate GPA</button>
+                    
+                    <div id="gpa-result-box" class="hidden mt-6 p-6 bg-blue-50 dark:bg-slate-800 rounded-xl border border-blue-100 dark:border-slate-700 text-center fade-in">
+                        <p class="text-gray-600 dark:text-gray-400 mb-2 font-medium">Your Semester GPA is</p>
+                        <h3 id="gpa-score" class="text-5xl font-extrabold text-blue-600 dark:text-blue-400">0.00</h3>
+                    </div>
+                </div>
+            `;
+            window.gpaRowCount = 0;
+            document.getElementById('gpa-rows').innerHTML = '';
+            addGpaRow(); addGpaRow(); addGpaRow();
+        }
+
+        function addGpaRow() {
+            const id = window.gpaRowCount++;
+            const row = document.createElement('div');
+            row.className = 'grid grid-cols-12 gap-2 items-center gpa-row';
+            row.id = `gpa-row-${id}`;
+            row.innerHTML = `
+                <div class="col-span-6">
+                    <input type="text" placeholder="Course ${id+1}" class="w-full p-2.5 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="col-span-2">
+                    <input type="number" min="0" step="0.5" placeholder="e.g. 3" class="w-full p-2.5 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500 gpa-credit text-center">
+                </div>
+                <div class="col-span-3">
+                    <select class="w-full p-2.5 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500 gpa-grade text-center cursor-pointer">
+                        <option value="">Select</option>
+                        <option value="4.00">A / A+ (4.00)</option>
+                        <option value="3.75">A- (3.75)</option>
+                        <option value="3.50">B+ (3.50)</option>
+                        <option value="3.25">B (3.25)</option>
+                        <option value="3.00">B- (3.00)</option>
+                        <option value="2.75">C+ (2.75)</option>
+                        <option value="2.50">C (2.50)</option>
+                        <option value="2.25">D (2.25)</option>
+                        <option value="0.00">F (0.00)</option>
+                    </select>
+                </div>
+                <div class="col-span-1 flex justify-center">
+                    <button onclick="document.getElementById('gpa-row-${id}').remove()" class="text-red-500 hover:text-red-700 p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"><i class="ph ph-trash text-lg"></i></button>
+                </div>
+            `;
+            document.getElementById('gpa-rows').appendChild(row);
+        }
+
+        function calculateGPA() {
+            const rows = document.querySelectorAll('.gpa-row');
+            let totalCredits = 0;
+            let totalPoints = 0;
+            
+            rows.forEach(row => {
+                const creditInput = row.querySelector('.gpa-credit').value;
+                const gradeInput = row.querySelector('.gpa-grade').value;
+                
+                if(creditInput && gradeInput !== '') {
+                    const credit = parseFloat(creditInput);
+                    const grade = parseFloat(gradeInput);
+                    
+                    if(!isNaN(credit) && !isNaN(grade)) {
+                        totalCredits += credit;
+                        totalPoints += (credit * grade);
+                    }
+                }
+            });
+            
+            if(totalCredits === 0) {
+                alert("Please enter credits and select grades to calculate your GPA.");
+                return;
+            }
+            
+            const gpa = totalPoints / totalCredits;
+            document.getElementById('gpa-score').innerText = gpa.toFixed(2);
+            document.getElementById('gpa-result-box').classList.remove('hidden');
+        }
+
+        // 12. Unit Converter
+        function renderUnitConverter(container) {
+            container.innerHTML = `
+                <div class="max-w-md mx-auto space-y-6">
+                    <div class="flex justify-center gap-2 mb-6">
+                        <button onclick="setUnitCategory('length')" id="btn-length" class="px-4 py-2 rounded-lg bg-blue-600 text-white transition-colors">Length</button>
+                        <button onclick="setUnitCategory('weight')" id="btn-weight" class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 dark:bg-slate-700 dark:text-gray-300 transition-colors">Weight</button>
+                        <button onclick="setUnitCategory('temp')" id="btn-temp" class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 dark:bg-slate-700 dark:text-gray-300 transition-colors">Temp</button>
+                    </div>
+                    
+                    <div class="space-y-4 bg-gray-50 dark:bg-slate-800 p-6 rounded-2xl border border-gray-200 dark:border-slate-700 shadow-sm">
+                        <div class="flex gap-2">
+                            <input type="number" id="unit-val-1" class="w-2/3 p-4 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500 text-lg font-medium" placeholder="0" oninput="convertUnit(1)">
+                            <select id="unit-type-1" class="w-1/3 p-4 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer text-sm" onchange="convertUnit(1)"></select>
+                        </div>
+                        <div class="text-center text-gray-400 py-1"><i class="ph ph-arrows-down-up text-2xl"></i></div>
+                        <div class="flex gap-2">
+                            <input type="number" id="unit-val-2" class="w-2/3 p-4 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500 text-lg font-medium" placeholder="0" oninput="convertUnit(2)">
+                            <select id="unit-type-2" class="w-1/3 p-4 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer text-sm" onchange="convertUnit(2)"></select>
+                        </div>
+                    </div>
+                </div>
+            `;
+            window.unitData = {
+                length: { m: 1, km: 1000, cm: 0.01, mi: 1609.34, ft: 0.3048, in: 0.0254 },
+                weight: { kg: 1000, g: 1, lb: 453.592, oz: 28.3495 },
+                temp: { C: 'C', F: 'F', K: 'K' } 
+            };
+            window.unitNames = {
+                length: { m: 'Meter', km: 'Kilometer', cm: 'Centimeter', mi: 'Mile', ft: 'Foot', in: 'Inch' },
+                weight: { kg: 'Kilogram', g: 'Gram', lb: 'Pound', oz: 'Ounce' },
+                temp: { C: 'Celsius', F: 'Fahrenheit', K: 'Kelvin' }
+            };
+            setUnitCategory('length');
+        }
+
+        function setUnitCategory(cat) {
+            window.currentUnitCat = cat;
+            ['length', 'weight', 'temp'].forEach(c => {
+                const btn = document.getElementById(`btn-${c}`);
+                if(c === cat) btn.className = "px-4 py-2 rounded-lg bg-blue-600 text-white transition-colors font-medium shadow-sm";
+                else btn.className = "px-4 py-2 rounded-lg bg-gray-200 text-gray-700 dark:bg-slate-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors font-medium";
+            });
+            
+            const select1 = document.getElementById('unit-type-1');
+            const select2 = document.getElementById('unit-type-2');
+            select1.innerHTML = ''; select2.innerHTML = '';
+            
+            for(let key in window.unitNames[cat]) {
+                select1.innerHTML += `<option value="${key}">${window.unitNames[cat][key]}</option>`;
+                select2.innerHTML += `<option value="${key}">${window.unitNames[cat][key]}</option>`;
+            }
+            
+            const keys = Object.keys(window.unitNames[cat]);
+            select1.value = keys[0];
+            select2.value = keys[1] || keys[0];
+            
+            document.getElementById('unit-val-1').value = '';
+            document.getElementById('unit-val-2').value = '';
+        }
+
+        function convertUnit(sourceIndex) {
+            const cat = window.currentUnitCat;
+            const val1 = document.getElementById('unit-val-1');
+            const val2 = document.getElementById('unit-val-2');
+            const type1 = document.getElementById('unit-type-1').value;
+            const type2 = document.getElementById('unit-type-2').value;
+            
+            let sourceVal = parseFloat(sourceIndex === 1 ? val1.value : val2.value);
+            let targetEl = sourceIndex === 1 ? val2 : val1;
+            let fromType = sourceIndex === 1 ? type1 : type2;
+            let toType = sourceIndex === 1 ? type2 : type1;
+
+            if(isNaN(sourceVal)) {
+                targetEl.value = '';
+                return;
+            }
+
+            let result = 0;
+            if(cat === 'temp') {
+                let celsius;
+                if(fromType === 'C') celsius = sourceVal;
+                else if(fromType === 'F') celsius = (sourceVal - 32) * 5/9;
+                else if(fromType === 'K') celsius = sourceVal - 273.15;
+
+                if(toType === 'C') result = celsius;
+                else if(toType === 'F') result = (celsius * 9/5) + 32;
+                else if(toType === 'K') result = celsius + 273.15;
+            } else {
+                const baseVal = sourceVal * window.unitData[cat][fromType];
+                result = baseVal / window.unitData[cat][toType];
+            }
+
+            targetEl.value = Number(result.toFixed(6)).toString(); // fixes floating point weirdness
+        }
+
+        // 13. Daily Sales Tracker
+        function renderSales(container) {
+            window.salesView = 'today'; 
+            container.innerHTML = `
+                <div class="max-w-3xl mx-auto flex flex-col h-full space-y-6 relative">
+                    <div id="sales-ui-area" class="no-print space-y-6">
+                        <div class="flex justify-between items-center bg-gray-100 dark:bg-slate-800 p-2 rounded-xl border border-gray-200 dark:border-slate-700 overflow-x-auto">
+                            <button onclick="setSalesView('today')" id="sv-today" class="px-4 py-2 rounded-lg bg-green-600 text-white font-medium shadow-sm whitespace-nowrap">Today</button>
+                            <button onclick="setSalesView('30')" id="sv-30" class="px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors font-medium whitespace-nowrap">30 Days</button>
+                            <button onclick="setSalesView('60')" id="sv-60" class="px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors font-medium whitespace-nowrap">60 Days</button>
+                            <button onclick="setSalesView('90')" id="sv-90" class="px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors font-medium whitespace-nowrap">90 Days</button>
+                        </div>
+
+                        <div class="bg-green-600 dark:bg-green-700 text-white p-6 rounded-2xl shadow-lg text-center relative overflow-hidden">
+                            <div class="absolute -right-4 -top-4 opacity-10"><i class="ph ph-coins text-9xl"></i></div>
+                            <p id="sales-period-text" class="text-green-100 font-medium mb-1 relative z-10">Today's Total Sales</p>
+                            <h2 class="text-5xl font-extrabold relative z-10">$<span id="sales-total">0.00</span></h2>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="text" id="sale-desc" class="flex-grow p-4 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 focus:ring-2 focus:ring-green-500 outline-none transition-colors" placeholder="Item description (e.g., Book)">
+                            <input type="number" id="sale-amount" class="w-full sm:w-36 p-4 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 focus:ring-2 focus:ring-green-500 outline-none transition-colors" placeholder="Amount ($)" onkeypress="if(event.key === 'Enter') addSale()">
+                            <button onclick="addSale()" class="bg-green-600 text-white px-8 py-4 rounded-xl hover:bg-green-700 transition-colors font-bold whitespace-nowrap shadow-sm">Add Sale</button>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-3 px-2">
+                                <span class="text-gray-600 dark:text-gray-300 font-bold">Transaction History</span>
+                                <div class="flex gap-4">
+                                    <button onclick="downloadSalesPDF()" id="btn-dl-sales" class="text-sm flex items-center gap-1 text-blue-600 dark:text-blue-400 hover:underline"><i class="ph ph-download-simple"></i> Download PDF</button>
+                                    <button onclick="clearSales()" class="text-sm text-red-500 hover:text-red-700 hover:underline">Clear All</button>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 overflow-hidden">
+                                <ul id="sales-list" class="divide-y divide-gray-200 dark:divide-slate-700 max-h-[350px] overflow-y-auto">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sales-print-area" class="hidden bg-white text-black p-8 rounded-xl min-h-[600px] flex-col relative">
+                        <div class="border-b-2 border-gray-800 pb-4 mb-6">
+                            <h1 class="text-3xl font-bold uppercase text-gray-800">Sales Report</h1>
+                            <p class="text-gray-500 mt-1" id="print-report-date"></p>
+                        </div>
+                        <table class="w-full text-left mb-6 flex-grow">
+                            <thead>
+                                <tr class="border-b bg-gray-100">
+                                    <th class="p-3">Date & Time</th>
+                                    <th class="p-3">Description</th>
+                                    <th class="p-3 text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="print-sales-tbody">
+                            </tbody>
+                        </table>
+                        <div class="flex justify-end pt-4 border-t-2 border-gray-800 mt-4">
+                            <div class="text-right">
+                                <p class="text-gray-600 uppercase text-sm font-bold">Total Sales</p>
+                                <p class="font-extrabold text-3xl">$<span id="print-sales-total">0.00</span></p>
+                            </div>
+                        </div>
+                        <!-- Sponsor Message -->
+                        <div class="mt-16 pt-4 border-t border-dashed border-gray-300 text-right w-full">
+                            <p class="text-gray-400 text-sm font-bold tracking-wide">Sponsored by <span class="text-gray-800">GLOWZY, DailyOS</span></p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            loadSales();
+        }
+
+        function setSalesView(view) {
+            window.salesView = view;
+            const views = ['today', '30', '60', '90'];
+            views.forEach(v => {
+                const btn = document.getElementById(`sv-${v}`);
+                if(v === view) {
+                    btn.className = "px-4 py-2 rounded-lg bg-green-600 text-white font-medium shadow-sm whitespace-nowrap";
+                } else {
+                    btn.className = "px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors font-medium whitespace-nowrap";
+                }
+            });
+            
+            const titles = { 'today': "Today's", '30': 'Last 30 Days', '60': 'Last 60 Days', '90': 'Last 90 Days' };
+            document.getElementById('sales-period-text').innerText = `${titles[view]} Total Sales`;
+            
+            loadSales();
+        }
+
+        function loadSales() {
+            const allSales = JSON.parse(localStorage.getItem('dailyos_sales') || '[]');
+            const list = document.getElementById('sales-list');
+            const printBody = document.getElementById('print-sales-tbody');
+            let total = 0;
+            
+            list.innerHTML = '';
+            printBody.innerHTML = '';
+            
+            const now = Date.now();
+            const todayStr = new Date().toLocaleDateString();
+            
+            const filteredSales = allSales.filter(sale => {
+                const saleDateStr = sale.date || todayStr; 
+                const saleTimeMs = sale.timestamp || now;
+                
+                if (window.salesView === 'today') return saleDateStr === todayStr;
+                
+                const daysMap = { '30': 30, '60': 60, '90': 90 };
+                const cutoff = now - (daysMap[window.salesView] * 24 * 60 * 60 * 1000);
+                return saleTimeMs >= cutoff;
+            });
+
+            if(filteredSales.length === 0) {
+                list.innerHTML = `<li class="p-8 text-center text-gray-500 dark:text-gray-400">No sales recorded for this period.</li>`;
+                printBody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-gray-500">No data found</td></tr>`;
+            } else {
+                filteredSales.forEach((sale, index) => {
+                    total += sale.amount;
+                    const dateDisplay = sale.date ? sale.date : 'Today';
+                    
+                    list.innerHTML += `
+                        <li class="flex items-center justify-between p-4 hover:bg-gray-100 dark:hover:bg-slate-700/50 transition-colors">
+                            <div>
+                                <p class="font-bold text-gray-800 dark:text-gray-200">${sale.desc || 'Unnamed Item'}</p>
+                                <p class="text-xs text-gray-500 flex items-center gap-1 mt-1"><i class="ph ph-calendar"></i> ${dateDisplay} &nbsp; <i class="ph ph-clock"></i> ${sale.time}</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="font-bold text-lg text-green-600 dark:text-green-400">$${sale.amount.toFixed(2)}</span>
+                                <button onclick="deleteSale(${allSales.indexOf(sale)})" class="text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 p-2 rounded-full transition-colors"><i class="ph ph-trash text-lg"></i></button>
+                            </div>
+                        </li>
+                    `;
+
+                    printBody.innerHTML += `
+                        <tr class="border-b">
+                            <td class="p-3 text-sm">${dateDisplay} ${sale.time}</td>
+                            <td class="p-3 text-sm">${sale.desc || 'Unnamed Item'}</td>
+                            <td class="p-3 text-right font-medium">$${sale.amount.toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+            }
+            
+            const totalFixed = total.toFixed(2);
+            document.getElementById('sales-total').innerText = totalFixed;
+            document.getElementById('print-sales-total').innerText = totalFixed;
+            
+            const titles = { 'today': "Today's", '30': '30 Days', '60': '60 Days', '90': '90 Days' };
+            document.getElementById('print-report-date').innerText = `Period: ${titles[window.salesView]} (Generated: ${new Date().toLocaleString()})`;
+        }
+
+        function addSale() {
+            const descInput = document.getElementById('sale-desc');
+            const amountInput = document.getElementById('sale-amount');
+            const amount = parseFloat(amountInput.value);
+            
+            if(isNaN(amount) || amount <= 0) return alert('Enter a valid sales amount.');
+            
+            const sales = JSON.parse(localStorage.getItem('dailyos_sales') || '[]');
+            const now = new Date();
+            const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const dateStr = now.toLocaleDateString();
+            
+            sales.unshift({ 
+                desc: descInput.value.trim(), 
+                amount: amount, 
+                time: time,
+                date: dateStr,
+                timestamp: Date.now()
+            });
+            
+            localStorage.setItem('dailyos_sales', JSON.stringify(sales));
+            
+            descInput.value = '';
+            amountInput.value = '';
+            descInput.focus();
+            
+            if(window.salesView !== 'today') {
+                setSalesView('today');
+            } else {
+                loadSales();
+            }
+        }
+
+        function deleteSale(actualIndex) {
+            if(!confirm("Are you sure you want to remove this sale?")) return;
+            const sales = JSON.parse(localStorage.getItem('dailyos_sales') || '[]');
+            sales.splice(actualIndex, 1);
+            localStorage.setItem('dailyos_sales', JSON.stringify(sales));
+            loadSales();
+        }
+
+        function clearSales() {
+            if(!confirm("Are you sure you want to clear ALL sales history? This cannot be undone.")) return;
+            localStorage.removeItem('dailyos_sales');
+            loadSales();
+        }
+
+        function downloadSalesPDF() {
+            const btn = document.getElementById('btn-dl-sales');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="ph ph-spinner-gap animate-spin"></i> Downloading...';
+            
+            if (typeof window.html2pdf === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+                script.onload = () => generateSalesPDF(btn, originalText);
+                document.head.appendChild(script);
+            } else {
+                generateSalesPDF(btn, originalText);
+            }
+        }
+
+        function generateSalesPDF(btn, originalText) {
+            const printArea = document.getElementById('sales-print-area');
+            const uiArea = document.getElementById('sales-ui-area'); 
+            
+            window.scrollTo(0, 0);
+            uiArea.style.display = 'none';
+            printArea.classList.remove('hidden');
+            printArea.classList.add('flex');
+            
+            const opt = {
+                margin:       0.5,
+                filename:     `Sales_Report_${window.salesView}_Days.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            setTimeout(() => {
+                html2pdf().set(opt).from(printArea).save().then(() => {
+                    uiArea.style.display = '';
+                    printArea.classList.remove('flex');
+                    printArea.classList.add('hidden');
+                    btn.innerHTML = originalText;
+                }).catch(err => {
+                    console.error("PDF generation error: ", err);
+                    btn.innerHTML = "Error!";
+                    uiArea.style.display = '';
+                    printArea.classList.remove('flex');
+                    printArea.classList.add('hidden');
+                    setTimeout(() => btn.innerHTML = originalText, 2000);
+                });
+            }, 300);
+        }
+
+        // 14. Memory Game
         function renderMemoryGame(container) {
             container.innerHTML = `
                 <div class="max-w-md mx-auto text-center">
