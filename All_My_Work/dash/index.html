@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoBank Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #ffffff;
+    }
+    .card {
+      background-color: #161b22;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px rgba(0, 255, 164, 0.1);
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #00ffc8, #6bffb8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="font-sans">
+  <div class="p-6">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <div class="text-2xl font-bold">NeoBank</div>
+      <div class="text-lg">Hi, <span class="font-semibold">Stefan!</span></div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Revenue Flow Chart -->
+      <div class="card md:col-span-2">
+        <div class="mb-4 text-lg font-semibold">Revenue Flow</div>
+        <canvas id="revenueChart" height="150"></canvas>
+      </div>
+
+      <!-- Card Info -->
+      <div class="card">
+        <div class="mb-2 text-sm">Total Balance</div>
+        <div class="text-2xl font-bold text-green-400">$22,350.50</div>
+        <div class="mt-4">
+          <div class="text-xs mb-2">**** 6969 2023</div>
+          <div class="text-sm font-semibold mb-2">Transactions</div>
+          <ul class="text-sm space-y-1">
+            <li>Figma - <span class="text-red-400">$15.00</span></li>
+            <li>Grammarly - <span class="text-red-400">$16.00</span></li>
+            <li>Blender - <span class="text-red-400">$16.00</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Available Pie Chart -->
+      <div class="card">
+        <div class="text-lg font-semibold mb-4">Available</div>
+        <canvas id="expenseChart" height="200"></canvas>
+      </div>
+
+      <!-- Income & Expense -->
+      <div class="card">
+        <div class="flex justify-between">
+          <div>
+            <div class="text-sm">Income</div>
+            <div class="text-xl font-bold text-green-400">$2,240</div>
+          </div>
+          <div>
+            <div class="text-sm">Expense</div>
+            <div class="text-xl font-bold text-red-400">$1,750</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Friends & Spending Graph -->
+      <div class="card">
+        <div class="text-sm font-semibold mb-2">Add Friends</div>
+        <div class="flex space-x-2 mb-4">
+          <img src="https://i.pravatar.cc/30?img=1" class="rounded-full" />
+          <img src="https://i.pravatar.cc/30?img=2" class="rounded-full" />
+          <img src="https://i.pravatar.cc/30?img=3" class="rounded-full" />
+        </div>
+        <div class="text-sm font-semibold mb-2">Spending</div>
+        <canvas id="spendingChart" height="100"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const revenueChart = new Chart(document.getElementById('revenueChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [{
+          label: 'Revenue',
+          data: [2200, 1850, 2100, 2300, 1900, 2400, 2650],
+          backgroundColor: '#00ffc8',
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+
+    const expenseChart = new Chart(document.getElementById('expenseChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Bills', 'Food', 'Transport', 'Others'],
+        datasets: [{
+          label: 'Expenses',
+          data: [650, 450, 300, 350],
+          backgroundColor: ['#00ffc8', '#6bffb8', '#33cda1', '#1ba886']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+
+    const spendingChart = new Chart(document.getElementById('spendingChart'), {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        datasets: [{
+          label: 'Spending',
+          data: [120, 150, 100, 170, 140],
+          borderColor: '#00ffc8',
+          backgroundColor: 'rgba(0,255,200,0.2)',
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } }
+      }
+    });
+  </script>
+</body>
+</html>
