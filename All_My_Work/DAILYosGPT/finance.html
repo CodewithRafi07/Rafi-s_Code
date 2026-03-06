@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Global Finance Tools | DailyOS</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+background:#0b1628;
+color:white;
+font-family:system-ui;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+main{
+flex:1;
+}
+
+/* tool cards */
+
+.tool-card{
+background:#1b2a41;
+border:1px solid #2f415e;
+border-radius:14px;
+padding:35px;
+text-align:center;
+transition:all .35s ease;
+cursor:pointer;
+}
+
+.tool-card:hover{
+transform:translateY(-8px) scale(1.03);
+background:#223555;
+border-color:#19d3a2;
+box-shadow:0 18px 35px rgba(0,0,0,0.35);
+}
+
+.tool-card svg{
+transition:.3s;
+}
+
+.tool-card:hover svg{
+transform:scale(1.15);
+stroke:#19d3a2;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- Navbar -->
+
+<div class="flex justify-between items-center px-6 py-4 border-b border-slate-700">
+
+<div class="flex items-center gap-2 font-semibold text-lg">
+
+<div class="bg-blue-600 p-2 rounded-lg">
+📦
+</div>
+
+DailyOS
+
+</div>
+
+<div class="text-xl cursor-pointer">
+☀️
+</div>
+
+</div>
+
+
+
+<main>
+
+
+<!-- Back Button -->
+
+<div class="max-w-6xl mx-auto px-6 mt-10">
+
+<a href="index.html"
+class="inline-flex items-center gap-2 bg-slate-800 border border-slate-600 px-5 py-2 rounded-lg hover:bg-slate-700 transition">
+
+← Back to Home
+
+</a>
+
+</div>
+
+
+
+<!-- Title -->
+
+<div class="text-center mt-16">
+
+<div class="bg-emerald-900/40 inline-flex p-6 rounded-xl mb-6 text-3xl">
+🌐
+</div>
+
+<h1 class="text-4xl font-bold mb-2">
+Global Finance Tools
+</h1>
+
+<p class="text-slate-400">
+Currency, international fees, and tax tools for freelancers.
+</p>
+
+</div>
+
+
+
+<!-- Divider -->
+
+<div class="max-w-6xl mx-auto mt-10 border-t border-slate-700"></div>
+
+
+
+<!-- Tools -->
+
+<div class="max-w-6xl mx-auto px-6 mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+
+<!-- Currency Converter -->
+
+<a href="currency.html" class="tool-card">
+
+<div class="text-4xl mb-4">
+💱
+</div>
+
+<h3 class="font-semibold text-lg">
+Live Currency Converter
+</h3>
+
+</a>
+
+
+
+<!-- Profit Conversion -->
+
+<a href="profit.html" class="tool-card">
+
+<div class="text-4xl mb-4">
+💰
+</div>
+
+<h3 class="font-semibold text-lg">
+Profit Conversion (USD to BDT)
+</h3>
+
+</a>
+
+
+
+<!-- Payment Fee -->
+
+<a href="fee.html" class="tool-card">
+
+<div class="text-4xl mb-4">
+🏦
+</div>
+
+<h3 class="font-semibold text-lg">
+Payment Fee Calc
+</h3>
+
+</a>
+
+
+
+<!-- Currency Splitter -->
+
+<a href="splitter.html" class="tool-card">
+
+<div class="text-4xl mb-4">
+↕️
+</div>
+
+<h3 class="font-semibold text-lg">
+Currency Splitter
+</h3>
+
+</a>
+
+
+
+<!-- VAT -->
+
+<a href="vat.html" class="tool-card">
+
+<div class="text-4xl mb-4">
+🧾
+</div>
+
+<h3 class="font-semibold text-lg">
+Tax / VAT Estimator
+</h3>
+
+</a>
+
+
+
+</div>
+
+
+</main>
+
+
+
+<!-- Footer -->
+
+<footer class="text-center text-slate-500 py-8 border-t border-slate-700 mt-16 text-sm">
+
+© 2026 DailyOS Digital Toolbox. Powered by Glowzy.
+
+</footer>
+
+
+</body>
+</html>

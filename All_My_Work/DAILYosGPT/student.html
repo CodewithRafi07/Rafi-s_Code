@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Tools | DailyOS</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+background:#0b1628;
+color:white;
+font-family:system-ui;
+}
+
+/* card design */
+
+.tool-card{
+background:#1b2a41;
+border:1px solid #2f415e;
+border-radius:14px;
+padding:35px;
+text-align:center;
+transition:all .35s ease;
+cursor:pointer;
+}
+
+/* hover effect */
+
+.tool-card:hover{
+transform:translateY(-8px) scale(1.03);
+background:#223555;
+border-color:#4c7cff;
+box-shadow:0 20px 35px rgba(0,0,0,0.35);
+}
+
+.tool-card svg{
+transition:all .35s ease;
+}
+
+.tool-card:hover svg{
+transform:scale(1.15);
+stroke:#7aa2ff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Top Navbar -->
+
+<div class="flex justify-between items-center px-6 py-4 border-b border-slate-700">
+
+<div class="flex items-center gap-2 font-semibold text-lg">
+<div class="bg-blue-600 p-2 rounded-lg">📦</div>
+DailyOS
+</div>
+
+<div class="text-xl cursor-pointer">☀️</div>
+
+</div>
+
+
+
+<!-- Back Button -->
+
+<div class="max-w-6xl mx-auto px-6 mt-10">
+
+<a href="index.html" class="inline-flex items-center gap-2 bg-slate-800 border border-slate-600 px-5 py-2 rounded-lg hover:bg-slate-700 transition">
+← Back to Home
+</a>
+
+</div>
+
+
+
+<!-- Title Section -->
+
+<div class="text-center mt-16">
+
+<div class="bg-blue-900/40 inline-flex p-6 rounded-xl mb-6">
+🎓
+</div>
+
+<h1 class="text-4xl font-bold mb-2">
+Student Tools
+</h1>
+
+<p class="text-slate-400">
+Calculators, notes, and academic trackers.
+</p>
+
+</div>
+
+
+
+<!-- Divider -->
+
+<div class="max-w-6xl mx-auto mt-10 border-t border-slate-700"></div>
+
+
+
+<!-- Tools Grid -->
+
+<div class="max-w-6xl mx-auto px-6 mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+
+<!-- Calculator -->
+
+<a href="calculator.html" class="tool-card">
+
+<div class="text-4xl mb-4">
+🧮
+</div>
+
+<h3 class="font-semibold text-lg">
+Smart Calculator
+</h3>
+
+</a>
+
+
+
+<!-- Notes -->
+
+<a href="notes.html" class="tool-card">
+
+<div class="text-4xl mb-4">
+📓
+</div>
+
+<h3 class="font-semibold text-lg">
+Notes Saver
+</h3>
+
+</a>
+
+
+
+<!-- GPA -->
+
+<a href="gpa.html" class="tool-card">
+
+<div class="text-4xl mb-4">
+🎓
+</div>
+
+<h3 class="font-semibold text-lg">
+GPA Calculator
+</h3>
+
+</a>
+
+<!-- Binary Converter -->
+
+<a href="binary-converter.html" class="tool-card">
+
+<div class="icon">💻</div>
+
+<h3 class="font-semibold text-lg">
+Binary Converter
+</h3>
+
+</a>
+
+
+
+<!-- Converter -->
+
+<a href="converter.html" class="tool-card">
+
+<div class="text-4xl mb-4">
+↔️
+</div>
+
+<h3 class="font-semibold text-lg">
+Unit Converter
+</h3>
+
+</a>
+
+
+</div>
+
+
+
+<!-- Footer -->
+
+<div class="text-center text-slate-500 mt-24 pb-8 text-sm">
+© 2026 DailyOS Digital Toolbox. Powered by Glowzy.
+</div>
+
+
+</body>
+</html>

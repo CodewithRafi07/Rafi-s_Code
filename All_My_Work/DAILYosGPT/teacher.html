@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Teacher Tools | DailyOS</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+background:#0b1628;
+color:white;
+font-family:system-ui;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+main{
+flex:1;
+}
+
+.tool-card{
+background:#1b2a41;
+border:1px solid #2f415e;
+border-radius:14px;
+padding:35px;
+text-align:center;
+transition:all .35s ease;
+cursor:pointer;
+}
+
+.tool-card:hover{
+transform:translateY(-8px) scale(1.03);
+background:#223555;
+border-color:#a78bfa;
+box-shadow:0 18px 35px rgba(0,0,0,0.35);
+}
+
+.icon{
+font-size:40px;
+margin-bottom:15px;
+transition:.3s;
+}
+
+.tool-card:hover .icon{
+transform:scale(1.15);
+color:#a78bfa;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- Navbar -->
+
+<div class="flex justify-between items-center px-6 py-4 border-b border-slate-700">
+
+<div class="flex items-center gap-2 font-semibold text-lg">
+
+<div class="bg-blue-600 p-2 rounded-lg">
+📦
+</div>
+
+DailyOS
+
+</div>
+
+<div class="text-xl cursor-pointer">
+☀️
+</div>
+
+</div>
+
+
+
+<main>
+
+
+<!-- Back Button -->
+
+<div class="max-w-6xl mx-auto px-6 mt-10">
+
+<a href="index.html"
+class="inline-flex items-center gap-2 bg-slate-800 border border-slate-600 px-5 py-2 rounded-lg hover:bg-slate-700 transition">
+
+← Back to Home
+
+</a>
+
+</div>
+
+
+
+<!-- Title -->
+
+<div class="text-center mt-16">
+
+<div class="bg-purple-900/40 inline-flex p-6 rounded-xl mb-6 text-3xl">
+🎓
+</div>
+
+<h1 class="text-4xl font-bold mb-2">
+Teacher Tools
+</h1>
+
+<p class="text-slate-400">
+Student pickers and marks calculation.
+</p>
+
+</div>
+
+
+
+<!-- Divider -->
+
+<div class="max-w-6xl mx-auto mt-10 border-t border-slate-700"></div>
+
+
+
+<!-- Tools -->
+
+<div class="max-w-6xl mx-auto px-6 mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+
+
+<!-- Random Student -->
+
+<a href="random-student.html" class="tool-card">
+
+<div class="icon">🎲</div>
+
+<h3 class="font-semibold text-lg">
+Random Student
+</h3>
+
+</a>
+
+
+
+<!-- Marks Calculator -->
+
+<a href="marks-calculator.html" class="tool-card">
+
+<div class="icon">📝</div>
+
+<h3 class="font-semibold text-lg">
+Marks Calculator
+</h3>
+
+</a>
+
+
+</div>
+
+
+</main>
+
+
+
+<!-- Footer -->
+
+<footer class="text-center text-slate-500 py-8 border-t border-slate-700 mt-16 text-sm">
+
+© 2026 DailyOS Digital Toolbox. Powered by Glowzy.
+
+</footer>
+
+
+</body>
+</html>

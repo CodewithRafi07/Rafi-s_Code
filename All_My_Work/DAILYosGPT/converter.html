@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyOS - Unit Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f1a;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+        .glass-card {
+            background-color: #161d2f;
+            border: 1px solid #2d3748;
+        }
+        .input-field {
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            color: white;
+        }
+        .input-field:focus {
+            border-color: #3b82f6;
+            outline: none;
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+        .btn-secondary {
+            background-color: #1e293b;
+            border: 1px solid #3b82f633;
+        }
+        .btn-secondary:hover {
+            background-color: #2d3748;
+        }
+        .result-box {
+            background-color: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0f1a; }
+        ::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 4px; }
+    </style>
+</head>
+<body class="flex flex-col">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <span class="text-xl font-bold tracking-tight">Daily<span class="text-blue-500">OS</span></span>
+        </div>
+        <button class="p-2 rounded-full hover:bg-gray-800 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
+            </svg>
+        </button>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center px-4 py-8">
+        <div class="w-full max-w-2xl">
+            <!-- Back Button -->
+            <a href="student.html" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-all group mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>Back</span>
+            </a>
+
+            <!-- Page Title -->
+            <div class="flex items-center justify-center gap-3 mb-10 text-center">
+                <span class="text-3xl">⚖️</span>
+                <h1 class="text-3xl font-bold">Unit Converter</h1>
+            </div>
+
+            <!-- Converter Container -->
+            <div class="glass-card rounded-2xl p-6 md:p-10 shadow-2xl">
+                <p class="text-gray-400 mb-8 text-center">Convert between various measurements across different categories.</p>
+
+                <div class="space-y-6">
+                    <!-- Category Selector -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-gray-500 uppercase tracking-widest px-1">Category</label>
+                        <select id="unit-category" onchange="updateUnits()" class="input-field w-full px-4 py-3 rounded-xl cursor-pointer font-medium text-blue-400">
+                            <option value="length">Length</option>
+                            <option value="weight">Weight / Mass</option>
+                            <option value="temperature">Temperature</option>
+                            <option value="area">Area</option>
+                            <option value="volume">Volume</option>
+                            <option value="time">Time</option>
+                            <option value="speed">Speed</option>
+                        </select>
+                    </div>
+
+                    <!-- From/To Selectors -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-gray-500 uppercase tracking-widest px-1">From</label>
+                            <select id="from-unit" class="input-field w-full px-4 py-3 rounded-xl cursor-pointer"></select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-gray-500 uppercase tracking-widest px-1">To</label>
+                            <select id="to-unit" class="input-field w-full px-4 py-3 rounded-xl cursor-pointer"></select>
+                        </div>
+                    </div>
+
+                    <!-- Input Area -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-gray-500 uppercase tracking-widest px-1">Value</label>
+                        <input type="number" id="num-input" placeholder="0.00" 
+                               class="input-field w-full px-4 py-4 rounded-xl text-lg font-medium tracking-wider focus:ring-2 ring-blue-500/20 transition-all">
+                    </div>
+
+                    <!-- Action Button -->
+                    <button onclick="convert()" class="w-full btn-primary text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-blue-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                        <span>Convert</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </button>
+
+                    <!-- Result Area -->
+                    <div id="result-container" class="hidden animate-in fade-in slide-in-from-top-4 duration-500">
+                        <div class="result-box rounded-xl p-6 text-center relative group overflow-hidden">
+                            <p class="text-gray-400 text-xs mb-2 uppercase tracking-widest">Result</p>
+                            <h2 id="result-text" class="text-3xl font-bold text-blue-400 break-all select-all">0</h2>
+                            
+                            <button onclick="copyResult()" class="absolute top-4 right-4 p-2 text-gray-500 hover:text-blue-400 transition-colors" title="Copy to clipboard">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-gray-500 text-sm">
+        <p>© 2026 DailyOS Digital Toolbox. Powered by Glowzy.</p>
+    </footer>
+
+    <script>
+        const unitData = {
+            length: {
+                meters: 1,
+                kilometers: 1000,
+                centimeters: 0.01,
+                millimeters: 0.001,
+                miles: 1609.34,
+                yards: 0.9144,
+                feet: 0.3048,
+                inches: 0.0254
+            },
+            weight: {
+                kilograms: 1,
+                grams: 0.001,
+                milligrams: 0.000001,
+                pounds: 0.453592,
+                ounces: 0.0283495,
+                metric_tons: 1000
+            },
+            temperature: {
+                celsius: 'C',
+                fahrenheit: 'F',
+                kelvin: 'K'
+            },
+            area: {
+                square_meters: 1,
+                square_kilometers: 1000000,
+                square_miles: 2589988.11,
+                acres: 4046.86,
+                hectares: 10000,
+                square_feet: 0.092903
+            },
+            volume: {
+                liters: 1,
+                milliliters: 0.001,
+                cubic_meters: 1000,
+                gallons: 3.78541,
+                quarts: 0.946353,
+                pints: 0.473176,
+                cups: 0.236588
+            },
+            time: {
+                seconds: 1,
+                minutes: 60,
+                hours: 3600,
+                days: 86400,
+                weeks: 604800,
+                months: 2629746,
+                years: 31556952
+            },
+            speed: {
+                meters_per_second: 1,
+                kilometers_per_hour: 0.277778,
+                miles_per_hour: 0.44704,
+                knots: 0.514444,
+                feet_per_second: 0.3048
+            }
+        };
+
+        function updateUnits() {
+            const category = document.getElementById('unit-category').value;
+            const fromSelect = document.getElementById('from-unit');
+            const toSelect = document.getElementById('to-unit');
+            const units = Object.keys(unitData[category]);
+
+            fromSelect.innerHTML = '';
+            toSelect.innerHTML = '';
+
+            units.forEach((unit, index) => {
+                const label = unit.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                const optFrom = new Option(label, unit);
+                const optTo = new Option(label, unit);
+                
+                fromSelect.add(optFrom);
+                toSelect.add(optTo);
+            });
+
+            // Set default second option for "To" if available
+            if (toSelect.options.length > 1) toSelect.selectedIndex = 1;
+            
+            // Clear result when changing category
+            document.getElementById('result-container').classList.add('hidden');
+        }
+
+        function convert() {
+            const category = document.getElementById('unit-category').value;
+            const fromUnit = document.getElementById('from-unit').value;
+            const toUnit = document.getElementById('to-unit').value;
+            const inputValue = parseFloat(document.getElementById('num-input').value);
+            const resultText = document.getElementById('result-text');
+            const resultContainer = document.getElementById('result-container');
+
+            if (isNaN(inputValue)) {
+                showToast("Please enter a valid number.");
+                return;
+            }
+
+            let result;
+
+            if (category === 'temperature') {
+                result = convertTemperature(inputValue, fromUnit, toUnit);
+            } else {
+                const factorFrom = unitData[category][fromUnit];
+                const factorTo = unitData[category][toUnit];
+                // Convert to base unit then to target unit
+                result = (inputValue * factorFrom) / factorTo;
+            }
+
+            // Format result (round to 6 decimal places if needed, then strip trailing zeros)
+            const formattedResult = Number(result.toFixed(6));
+            resultText.innerText = formattedResult.toLocaleString();
+            resultContainer.classList.remove('hidden');
+        }
+
+        function convertTemperature(val, from, to) {
+            let celsius;
+            // Convert to Celsius first
+            if (from === 'celsius') celsius = val;
+            else if (from === 'fahrenheit') celsius = (val - 32) * 5 / 9;
+            else if (from === 'kelvin') celsius = val - 273.15;
+
+            // Convert from Celsius to target
+            if (to === 'celsius') return celsius;
+            if (to === 'fahrenheit') return (celsius * 9 / 5) + 32;
+            if (to === 'kelvin') return celsius + 273.15;
+            return val;
+        }
+
+        function copyResult() {
+            const text = document.getElementById('result-text').innerText.replace(/,/g, '');
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+            showToast("Copied to clipboard!");
+        }
+
+        function showToast(msg) {
+            const existing = document.querySelector('.toast-msg');
+            if (existing) existing.remove();
+
+            const toast = document.createElement('div');
+            toast.className = 'toast-msg fixed bottom-8 right-8 bg-gray-800 text-white px-6 py-3 rounded-lg border border-gray-700 shadow-2xl animate-bounce z-50';
+            toast.innerText = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // Handle Enter key
+        document.getElementById('num-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') convert();
+        });
+
+        // Initialize on load
+        window.onload = updateUnits;
+    </script>
+</body>
+</html>

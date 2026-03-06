@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DailyOS - Digital Toolbox</title>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background:#0f172a;
+color:white;
+font-family:system-ui;
+}
+
+.card{
+background:#1e293b;
+border-radius:15px;
+padding:30px;
+transition:0.3s;
+border:1px solid #334155;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.icon{
+width:60px;
+height:60px;
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<div class="flex justify-between items-center px-6 py-4 border-b border-gray-700">
+
+<div class="flex items-center space-x-2 text-xl font-bold">
+📦 <span>DailyOS</span>
+</div>
+
+<button id="themeToggle" class="text-xl">☀️</button>
+
+</div>
+
+
+<!-- Header -->
+
+<div class="text-center mt-16 px-6">
+
+<h1 class="text-4xl md:text-5xl font-bold mb-4">
+Your Digital Toolbox
+</h1>
+
+<p class="text-gray-400">
+Everything you need, instantly available in your browser.
+</p>
+
+</div>
+
+
+<!-- Tools Section -->
+
+<div class="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
+
+
+<!-- Student Tools -->
+
+<a href="student.html" class="card flex items-center space-x-6">
+
+<div class="icon bg-blue-900">
+🎓
+</div>
+
+<div>
+<h2 class="text-xl font-semibold">Student Tools</h2>
+<p class="text-gray-400 text-sm">
+Calculators, notes, and academic trackers.
+</p>
+<p class="text-sm text-gray-500 mt-2">
+5 Apps Ready
+</p>
+</div>
+
+</a>
+
+
+<!-- Finance Tools -->
+
+<a href="finance.html" class="card flex items-center space-x-6">
+
+<div class="icon bg-green-900">
+🌎
+</div>
+
+<div>
+<h2 class="text-xl font-semibold">Global Finance Tools</h2>
+<p class="text-gray-400 text-sm">
+Currency, international fees, and tax tools.
+</p>
+<p class="text-sm text-gray-500 mt-2">
+5 Apps Ready
+</p>
+</div>
+
+</a>
+
+
+
+<!-- Shopkeeper -->
+
+<a href="shopkeeper.html" class="card flex items-center space-x-6">
+
+<div class="icon bg-teal-900">
+🏪
+</div>
+
+<div>
+<h2 class="text-xl font-semibold">Shopkeeper Tools</h2>
+<p class="text-gray-400 text-sm">
+Sales tracking, invoices, and profit tools.
+</p>
+<p class="text-sm text-gray-500 mt-2">
+3 Apps Ready
+</p>
+</div>
+
+</a>
+
+
+
+<!-- Teacher -->
+
+<a href="teacher.html" class="card flex items-center space-x-6">
+
+<div class="icon bg-purple-900">
+📊
+</div>
+
+<div>
+<h2 class="text-xl font-semibold">Teacher Tools</h2>
+<p class="text-gray-400 text-sm">
+Student pickers and marks calculation.
+</p>
+<p class="text-sm text-gray-500 mt-2">
+2 Apps Ready
+</p>
+</div>
+
+</a>
+
+
+
+<!-- Everyone -->
+
+<a href="everyone.html" class="card flex items-center space-x-6">
+
+<div class="icon bg-orange-900">
+🌍
+</div>
+
+<div>
+<h2 class="text-xl font-semibold">For Everyone</h2>
+<p class="text-gray-400 text-sm">
+Daily utilities, passwords, and mini games.
+</p>
+<p class="text-sm text-gray-500 mt-2">
+5 Apps Ready
+</p>
+</div>
+
+</a>
+
+
+</div>
+
+
+
+<!-- Footer -->
+
+<div class="text-center mt-16 text-gray-500 text-sm pb-10">
+
+© 2026 DailyOS Digital Toolbox. Powered by Glowzy.
+
+</div>
+
+
+
+<script>
+
+const toggle = document.getElementById("themeToggle");
+
+toggle.onclick = () => {
+
+if(document.body.style.background == "white"){
+
+document.body.style.background="#0f172a"
+document.body.style.color="white"
+
+}else{
+
+document.body.style.background="white"
+document.body.style.color="black"
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
