@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | WebMark Agency</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#060A1B', secondary: '#544168', accent: '#C498CE', light: '#ECEDF8', muted: '#8B8BA7'
+                    },
+                    fontFamily: { display: ['Space Grotesk', 'sans-serif'], body: ['DM Sans', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root { --bg: #060A1B; --fg: #ECEDF8; --muted: #8B8BA7; --accent: #C498CE; --secondary: #544168; --card: rgba(84, 65, 104, 0.15); --border: rgba(196, 152, 206, 0.2); }
+        body { font-family: 'DM Sans', sans-serif; background-color: var(--bg); color: var(--fg); }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+        .bg-grid { position: fixed; inset: 0; background-image: linear-gradient(rgba(196, 152, 206, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(196, 152, 206, 0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: -1; }
+        .nav-blur { backdrop-filter: blur(20px); background: rgba(6, 10, 27, 0.8); border-bottom: 1px solid var(--border); }
+        .nav-link { position: relative; color: #8B8BA7; transition: color 0.3s ease; }
+        .nav-link:hover { color: var(--fg); }
+        .blog-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.4s ease; }
+        .blog-card:hover { transform: translateY(-8px); border-color: rgba(196, 152, 206, 0.4); box-shadow: 0 20px 60px rgba(84, 65, 104, 0.2); }
+        .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: rgba(6, 10, 27, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 24px; z-index: 40; }
+        .mobile-menu.active { display: block; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; }
+        ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav-blur fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="test.html" class="font-display text-2xl font-bold text-light">
+                WebMark Agency<span class="text-accent">.</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="test.html" class="nav-link font-medium">Home</a>
+                <a href="blog.html" class="nav-link font-medium text-accent">Blog</a>
+            </div>
+            
+            <button id="menuToggle" class="md:hidden text-light p-2 focus:outline-none" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div id="mobileMenu" class="mobile-menu">
+            <div class="flex flex-col gap-4">
+                <a href="test.html" class="text-muted hover:text-light transition-colors py-2">Home</a>
+                <a href="blog.html" class="text-light py-2">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <span class="reveal text-accent font-medium tracking-wider uppercase text-sm">Our Blog</span>
+            <h1 class="reveal reveal-delay-1 font-display text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 mb-6">
+                Insights & Strategies
+            </h1>
+            <p class="reveal reveal-delay-2 text-muted text-lg max-w-2xl mx-auto">
+                Stay updated with the latest trends in YouTube SEO, digital marketing, and growth strategies.
+            </p>
+        </div>
+    </header>
+
+    <!-- Blog Grid -->
+    <section class="pb-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- POST 1 (Linked to blog1.html) -->
+<!-- POST 1 (Updated) -->
+<article class="reveal blog-card group">
+    <a href="blog1.html" class="block">
+        <div class="overflow-hidden">
+            <!-- Updated Image Source -->
+            <img src="https://z-cdn-media.chatglm.cn/files/7388caa5-a80e-4c04-8ac6-76c22d4d32c1.jpg?auth_key=1876081613-d4f5caf16c04462ca99ca42ac84ed219-0-f38a0890292eeae5ae1afd706ded3fee" alt="Organic Music Promotion" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="p-6">
+            <div class="flex items-center gap-3 mb-3">
+                <!-- Updated Tag -->
+                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-secondary/50 text-accent">Music Promotion</span>
+                <span class="text-xs text-muted">Jan 2025</span>
+            </div>
+            <!-- Updated Title -->
+            <h3 class="font-display text-xl font-semibold mb-3 group-hover:text-accent transition-colors">Organic Promotion for Artists: Why It’s the Best Choice</h3>
+            <!-- Updated Description -->
+            <p class="text-muted text-sm mb-4 line-clamp-2">Learn why organic promotion across Facebook, SoundCloud, Spotify & Instagram is the safest way to grow real fans.</p>
+            <span class="text-accent text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Read More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+        </div>
+    </a>
+</article>
+
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-border mt-auto">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="font-display text-xl font-bold">WEBMARK AGENCY<span class="text-accent">.</span></div>
+                <div class="text-sm text-muted text-center">&copy; 2026 WEBMARK AGENCY. All rights reserved.</div>
+                <div class="flex items-center gap-4">
+                    <a href="privacy.html" class="text-muted hover:text-light transition-colors">Privacy</a>
+                    <a href="terms.html" class="text-muted hover:text-light transition-colors">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle'); const mobileMenu = document.getElementById('mobileMenu');
+        if (menuToggle && mobileMenu) { menuToggle.addEventListener('click', () => { mobileMenu.classList.toggle('active'); }); }
+        const reveals = document.querySelectorAll('.reveal'); const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) { reveals.forEach(el => el.classList.add('active')); } else { const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 }); reveals.forEach(el => observer.observe(el)); }
+    </script>
+</body>
+</html>
