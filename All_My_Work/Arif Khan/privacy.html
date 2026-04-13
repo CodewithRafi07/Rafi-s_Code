@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | WebMark Agency</title>
+    
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#060A1B',
+                        secondary: '#544168',
+                        accent: '#C498CE',
+                        light: '#ECEDF8',
+                        muted: '#8B8BA7'
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --bg: #060A1B;
+            --fg: #ECEDF8;
+            --muted: #8B8BA7;
+            --accent: #C498CE;
+            --secondary: #544168;
+            --border: rgba(196, 152, 206, 0.2);
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--fg);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Background Grid */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(196, 152, 206, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196, 152, 206, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navigation Blur */
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(6, 10, 27, 0.8);
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Background Grid -->
+    <div class="bg-grid"></div>
+
+    <!-- Simplified Navigation with Back Button -->
+    <nav class="nav-blur fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            
+            <!-- Back Button (Left side) -->
+            <a href="test.html" class="flex items-center gap-2 text-muted hover:text-light transition-colors duration-300 group">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-1 transition-transform">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span class="font-medium text-sm tracking-wide">Back</span>
+            </a>
+
+            <!-- Logo (Right side) -->
+            <a href="index.html" class="font-display text-xl font-bold text-light">
+                WebMark Agency<span class="text-accent">.</span>
+            </a>
+            
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Hero Title -->
+            <div class="mb-12 border-b border-white/10 pb-8">
+                <p class="text-xs font-bold tracking-widest text-accent uppercase mb-3">Legal</p>
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 font-display">Privacy Policy</h1>
+                <p class="text-muted text-lg">Effective Date: <span class="text-white font-medium">January 2025</span></p>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="space-y-10 text-muted font-light leading-relaxed">
+
+                <!-- Intro -->
+                <p class="text-lg border-l-2 border-accent pl-6">
+                    WebMark Agency is committed to protecting your privacy and personal information.
+                </p>
+
+                <!-- Section 1: Information We Collect -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Information We Collect</h2>
+                    <p class="mb-4">We may collect the following information:</p>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">•</span>
+                            <span>Name and email address</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">•</span>
+                            <span>Social media account links</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">•</span>
+                            <span>Project details and preferences</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">•</span>
+                            <span>Payment-related information</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Section 2: How We Use Your Information -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">How We Use Your Information</h2>
+                    <p class="mb-4">We use your information to:</p>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✔</span>
+                            <span>Provide and manage our services</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✔</span>
+                            <span>Communicate with you regarding your project</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✔</span>
+                            <span>Improve our services and customer experience</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Section 3: Data Protection -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Data Protection</h2>
+                    <p>
+                        We implement standard security measures to protect your information. However, no online system is completely secure.
+                    </p>
+                </section>
+
+                <!-- Section 4: Data Sharing -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Data Sharing</h2>
+                    <p class="mb-4">We do not sell, trade, or rent your personal information.</p>
+                    <p>We may share limited data only with:</p>
+                    <ul class="space-y-3 pl-4 mt-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">🔒</span>
+                            <span>Trusted service providers</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">🔒</span>
+                            <span>Legal authorities if required by law</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Section 5: Cookies -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Cookies</h2>
+                    <p class="mb-4">Our website may use cookies to:</p>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">•</span>
+                            <span>Improve user experience</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">•</span>
+                            <span>Analyze website traffic</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Section 6: International Users -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">International Users</h2>
+                    <p>
+                        As we work with clients worldwide, your information may be processed in different countries.
+                    </p>
+                </section>
+
+                <!-- Section 7: Your Rights -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Your Rights</h2>
+                    <p class="mb-4">You have the right to:</p>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">⚡</span>
+                            <span>Access your personal data</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">⚡</span>
+                            <span>Request correction or deletion</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">⚡</span>
+                            <span>Opt-out of communications at any time</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Section 8: Policy Updates -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Policy Updates</h2>
+                    <p>
+                        We may update this Privacy Policy at any time. Updates will be posted on this page.
+                    </p>
+                </section>
+
+                <!-- Section 9: Contact Us -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Contact Us</h2>
+                    <p class="mb-4">If you have any questions, please contact us:</p>
+                    <div class="bg-white/5 p-6 rounded-lg inline-block">
+                        <p class="text-white font-medium">Email: <a href="mailto:webmarkagency.it@gmail.com" class="text-accent hover:underline">webmarkagency.it@gmail.com</a></p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-border mt-auto">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="font-display text-xl font-bold">
+                    WEBMARK AGENCY<span class="text-accent">.</span>
+                </div>
+                <div class="text-sm text-muted text-center">
+                    &copy; 2026 WEBMARK AGENCY. All rights reserved.
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="privacy.html" class="text-muted hover:text-light transition-colors">Privacy</a>
+                    <a href="terms.html" class="text-muted hover:text-light transition-colors">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | WebMark Agency</title>
+    
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#060A1B',
+                        secondary: '#544168',
+                        accent: '#C498CE',
+                        light: '#ECEDF8',
+                        muted: '#8B8BA7'
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --bg: #060A1B;
+            --fg: #ECEDF8;
+            --muted: #8B8BA7;
+            --accent: #C498CE;
+            --secondary: #544168;
+            --border: rgba(196, 152, 206, 0.2);
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--fg);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Background Grid */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(196, 152, 206, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196, 152, 206, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navigation Blur */
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(6, 10, 27, 0.8);
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Background Grid -->
+    <div class="bg-grid"></div>
+
+    <!-- Simplified Navigation with Back Button -->
+    <nav class="nav-blur fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            
+            <!-- Back Button (Left side) -->
+            <a href="test.html" class="flex items-center gap-2 text-muted hover:text-light transition-colors duration-300 group">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-1 transition-transform">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span class="font-medium text-sm tracking-wide">Back</span>
+            </a>
+
+            <!-- Logo (Right side - Optional, kept for branding) -->
+            <a href="index.html" class="font-display text-xl font-bold text-light">
+                WebMark Agency<span class="text-accent">.</span>
+            </a>
+            
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Hero Title -->
+            <div class="mb-12 border-b border-white/10 pb-8">
+                <p class="text-xs font-bold tracking-widest text-accent uppercase mb-3">Legal Agreement</p>
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 font-display">Terms & Conditions</h1>
+                <p class="text-muted text-lg">Effective Date: <span class="text-white font-medium">January 2025</span></p>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="space-y-10 text-muted font-light leading-relaxed">
+
+                <!-- Intro -->
+                <p class="text-lg border-l-2 border-accent pl-6">
+                    Welcome to WebMark Agency. By accessing or using our website (webmarkagency.it.com), you agree to be bound by the following Terms and Conditions.
+                </p>
+
+                <!-- Section 1: Services -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Services</h2>
+                    <p class="mb-4">
+                        WebMark Agency provides digital marketing and promotion services across multiple platforms including YouTube, Spotify, SoundCloud, Facebook, Instagram, Bandcamp, Apple Music, Mixcloud, Twitter (X), and Snapchat.
+                    </p>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✔</span>
+                            <span>We provide 100% organic promotion. We do not use bots, fake engagement, or artificial methods.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✔</span>
+                            <span>We strictly follow all platform guidelines and policies to ensure safe and compliant growth.</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Section 2: No Guarantee -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">No Guarantee Disclaimer</h2>
+                    <p class="mb-4">We strive to deliver the best possible results. However, we do not guarantee:</p>
+                    <div class="bg-white/5 p-6 rounded-lg space-y-2">
+                        <div class="flex items-center gap-3"><span class="text-muted">•</span> Specific numbers of views, streams, or followers</div>
+                        <div class="flex items-center gap-3"><span class="text-muted">•</span> Viral success or trending positions</div>
+                        <div class="flex items-center gap-3"><span class="text-muted">•</span> Monetization approval</div>
+                    </div>
+                    <p class="mt-4 text-sm italic">Results may vary depending on content quality, competition, and platform algorithms.</p>
+                </section>
+
+                <!-- Section 3: Client Responsibilities -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Client Responsibilities</h2>
+                    <p class="mb-4">By using our services, you agree:</p>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✅</span> To provide original and legal content
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✅</span> Not to violate any copyright or intellectual property laws
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✅</span> To follow all platform rules and community guidelines
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Section 4: Payments -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Payments</h2>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-center gap-3">💳 All payments must be made in advance</li>
+                        <li class="flex items-center gap-3">💳 Payments are non-refundable once the service has started</li>
+                        <li class="flex items-center gap-3">💳 Custom services may require milestone-based payments</li>
+                    </ul>
+                </section>
+
+                <!-- Section 5: Intellectual Property -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Intellectual Property</h2>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">🛡️</span>
+                            Clients retain full ownership of their content.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">🛡️</span>
+                            WebMark Agency may use completed projects for portfolio or promotional purposes.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Section 6: Liability -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Limitation of Liability</h2>
+                    <p class="mb-4">WebMark Agency is not responsible for:</p>
+                    <ul class="space-y-3 pl-4 text-red-300/80">
+                        <li class="flex items-center gap-3">✖ Account suspension, restriction, or removal</li>
+                        <li class="flex items-center gap-3">✖ Changes in platform algorithms or policies</li>
+                        <li class="flex items-center gap-3">✖ Any loss of revenue, data, or business</li>
+                    </ul>
+                </section>
+
+                <!-- Section 7: Service Refusal -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Service Refusal</h2>
+                    <p class="mb-4">We reserve the right to refuse or terminate services if:</p>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-center gap-3">⚠️ Content is illegal, harmful, or unethical</li>
+                        <li class="flex items-center gap-3">⚠️ Client behavior is abusive or violates our terms</li>
+                    </ul>
+                </section>
+
+                <!-- Section 8: Global Clients -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Global Clients</h2>
+                    <p>We serve clients worldwide including but not limited to the USA, UK, Germany, Canada, Netherlands, Hungary, and other countries.</p>
+                </section>
+                
+                <!-- Section 9: Changes -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-4 font-display">Changes to Terms</h2>
+                    <p>We reserve the right to update or modify these Terms at any time without prior notice.</p>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-border mt-auto">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="font-display text-xl font-bold">
+                    WEBMARK AGENCY<span class="text-accent">.</span>
+                </div>
+                <div class="text-sm text-muted text-center">
+                    &copy; 2026 WEBMARK AGENCY. All rights reserved.
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="privacy.html" class="text-muted hover:text-light transition-colors">Privacy</a>
+                    <a href="terms.html" class="text-muted hover:text-light transition-colors">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -208,26 +208,32 @@
         }
         
         /* Social Links */
-        .social-card {
-            background: rgba(84, 65, 104, 0.1);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-        }
-        .social-icon {
-          width: 24px;
-          height: 24px;
-          color: #229ED9; /* Instagram pink */
-         }
+.social-card {
+    background: rgba(84, 65, 104, 0.1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* horizontal centering */
+    justify-content: center; /* vertical centering */
+    gap: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    color: #229ED9;
+    display: flex;         /* make icon a flex container */
+    align-items: center;   /* vertically center inside itself */
+    justify-content: center; /* horizontally center inside itself */
+}
 
 
         
@@ -481,15 +487,15 @@
                     <!-- Quick Stats -->
                     <div class="reveal reveal-delay-4 grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-border">
                         <div>
-                            <div class="stat-number" data-target="150">0</div>
+                            <div class="stat-number" data-target="190">0</div>
                             <div class="text-sm text-muted">Channels Optimized</div>
                         </div>
                         <div>
-                            <div class="stat-number" data-target="89">0</div>
+                            <div class="stat-number" data-target="90">0</div>
                             <div class="text-sm text-muted">Avg CTR Increase</div>
                         </div>
                         <div>
-                            <div class="stat-number" data-target="5">0</div>
+                            <div class="stat-number" data-target="4">0</div>
                             <div class="text-sm text-muted">Years Experience</div>
                         </div>
                     </div>
@@ -672,56 +678,7 @@
                     </a>
                 </div>
 
-                <!-- Service new 1 -->
-<div class="reveal card group">
-    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-accent flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-        <!-- Music Icon -->
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <path d="M9 18V5l12-2v13"></path>
-            <circle cx="6" cy="18" r="3"></circle>
-            <circle cx="18" cy="16" r="3"></circle>
-        </svg>
-    </div>
-
-    <h3 class="font-display text-xl font-semibold mb-3">
-        SoundCloud Organic Promotion
-    </h3>
-
-    <p class="text-muted text-sm mb-4">
-        Complete promotion of your tracks to maximize plays, followers, and engagement.
-    </p>
-
-    <ul class="text-sm text-muted space-y-2 mb-6">
-        <li class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent">
-                <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Targeted reach for your music
-        </li>
-
-        <li class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent">
-                <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Optimized track descriptions & metadata
-        </li>
-
-        <li class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent">
-                <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Strategic promotion for organic growth
-        </li>
-    </ul>
-
-    <a href="#contact" class="text-accent font-medium text-sm hover:underline inline-flex items-center gap-1">
-        Get Started
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
-    </a>
-</div>
+              
 
 <!-- Service new 2 -->
 <div class="reveal card group">
@@ -1138,15 +1095,15 @@
                 <!-- Stats Grid -->
                 <div class="reveal reveal-delay-2 grid grid-cols-2 gap-4">
                     <div class="card text-center">
-                        <div class="stat-number text-4xl">150+</div>
+                        <div class="stat-number text-4xl">190+</div>
                         <div class="text-sm text-muted mt-2">Channels Optimized</div>
                     </div>
                     <div class="card text-center">
-                        <div class="stat-number text-4xl">98%</div>
+                        <div class="stat-number text-4xl">99%</div>
                         <div class="text-sm text-muted mt-2">Client Satisfaction</div>
                     </div>
                     <div class="card text-center">
-                        <div class="stat-number text-4xl">5M+</div>
+                        <div class="stat-number text-4xl">4M+</div>
                         <div class="text-sm text-muted mt-2">Views Generated</div>
                     </div>
                     <div class="card text-center">
@@ -1295,17 +1252,7 @@
                     <p class="text-xs text-muted mt-1">Fiverr Seller</p>
                 </div>
                 
-                <div class="reveal reveal-delay-3 cert-card aspect-[3/4] flex flex-col items-center justify-center p-4 text-center">
-                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center mb-4">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="3" y1="9" x2="21" y2="9"></line>
-                            <line x1="9" y1="21" x2="9" y2="9"></line>
-                        </svg>
-                    </div>
-                    <h4 class="font-display font-semibold text-sm">SEMrush</h4>
-                    <p class="text-xs text-muted mt-1">SEO Certified</p>
-                </div>
+
                 
                 <div class="reveal reveal-delay-4 cert-card aspect-[3/4] flex flex-col items-center justify-center p-4 text-center">
                     <div class="w-16 h-16 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center mb-4">
@@ -1335,74 +1282,40 @@
                 </p>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div class="flex flex-wrap justify-center gap-4">
                 <!-- Fiverr -->
-                <a href="https://www.fiverr.com/s/XLAqpQe?utm_source=CopyLink_Mobile" target="_blank" rel="noopener noreferrer" class="reveal social-card">
+                <a href="https://www.fiverr.com/tamanna0324" target="_blank" rel="noopener noreferrer" class="reveal social-card">
                     <svg class="social-icon" viewBox="0 0 24 24" fill="#1DBF73">
                         <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h1.527v1.316zm-6.786 1.501h-3.359c.088.546.43.858 1.006.858.43 0 .732-.166.878-.459l1.413.444c-.39.848-1.233 1.357-2.29 1.357-1.59 0-2.61-1.062-2.61-2.506 0-1.453 1.02-2.506 2.496-2.506 1.514 0 2.466 1.014 2.466 2.506v.306zm-1.543-.848c-.073-.546-.41-.858-.923-.858-.493 0-.82.312-.893.858h1.816zm-3.145-3.117h1.61v4.874h-1.61v-.635c-.382.55-.88.754-1.523.754-1.243 0-2.19-1.062-2.19-2.506 0-1.453.947-2.506 2.19-2.506.643 0 1.14.195 1.523.754v-.735zm-.35 2.487c0 .615-.42 1.053-1.011 1.053-.585 0-1.005-.438-1.005-1.053 0-.615.42-1.053 1.005-1.053.59 0 1.01.438 1.01 1.053zm-3.87-2.487h1.61v4.874h-1.61v-.635c-.382.55-.88.754-1.523.754-1.243 0-2.19-1.062-2.19-2.506 0-1.453.947-2.506 2.19-2.506.643 0 1.14.195 1.523.754v-.735zm-.35 2.487c0 .615-.42 1.053-1.011 1.053-.585 0-1.005-.438-1.005-1.053 0-.615.42-1.053 1.005-1.053.59 0 1.01.438 1.01 1.053zM3.61 10.47h1.61v4.874H3.61v-.74c-.39.574-.878.74-1.415.74C.995 15.344 0 14.282 0 12.838c0-1.453.996-2.506 2.196-2.506.536 0 1.024.195 1.415.74v-.602zm-.35 2.368c0 .615-.42 1.053-1.011 1.053-.585 0-1.005-.438-1.005-1.053 0-.615.42-1.053 1.005-1.053.59 0 1.01.438 1.01 1.053z"/>
                     </svg>
                     <span class="font-medium text-sm">Fiverr</span>
                 </a>
                 
-                <!-- Upwork -->
-                <a href="https://www.upwork.com/freelancers/~0157d282919a9389f3?mp_source=share" target="_blank" rel="noopener noreferrer" class="reveal reveal-delay-1 social-card">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="#6FDA44">
-                        <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.984 3.232l-1.683 7.903h2.839l1.212-5.695c1.062.678 2.286 1.102 3.645 1.102 2.962 0 5.372-2.417 5.372-5.379 0-2.962-2.41-5.379-5.372-5.379z"/>
-                    </svg>
-                    <span class="font-medium text-sm">Upwork</span>
-                </a>
-                
-                <!-- LinkedIn -->
+                <!-- LinkedIn 
                 <a href="https://www.linkedin.com/in/mdrafikhan/" target="_blank" rel="noopener noreferrer" class="reveal reveal-delay-2 social-card">
                     <svg class="social-icon" viewBox="0 0 24 24" fill="#0A66C2">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                     </svg>
                     <span class="font-medium text-sm">LinkedIn</span>
-                </a>
+                </a>-->
                 
-                <!-- Toptal -->
-                <a href="#" target="_blank" rel="noopener noreferrer" class="reveal reveal-delay-3 social-card">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="#3863A0">
-                        <path d="M20.229 5.237c-.027-.058-.067-.116-.114-.165a.724.724 0 0 0-.114-.107l-.014-.01-.01-.007L12.723.172a.695.695 0 0 0-.79 0L4.673 4.95l-.011.006-.013.01a.682.682 0 0 0-.228.272.717.717 0 0 0-.08.293v9.46c0 .105.027.205.07.296.044.09.107.173.182.24l.01.008.01.007 7.259 4.777a.695.695 0 0 0 .79 0l7.258-4.777.01-.007.01-.008a.68.68 0 0 0 .182-.24.704.704 0 0 0 .07-.296V5.52a.72.72 0 0 0-.043-.283zM12.327 1.66l5.554 3.654-2.48 1.633-5.553-3.654 2.479-1.633zm-1.185 4.868L5.59 8.16V4.505l5.553 3.654v.37zm6.74 3.653L12.327 8.16l5.554-3.654v5.675zm-6.74 1.695V17.5l-5.553-3.653V8.16l5.553 3.655v.06zm1.185 5.28v-5.28l5.554-3.653v5.28l-5.554 3.653z"/>
-                    </svg>
-                    <span class="font-medium text-sm">Toptal</span>
-                </a>
-                
-                <!-- YouTube -->
-                <a href="#" target="_blank" rel="noopener noreferrer" class="reveal reveal-delay-4 social-card">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="#FF0000">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                    <span class="font-medium text-sm">YouTube</span>
-                </a>
                 
                 <!-- Facebook -->
-                <a href="https://www.facebook.com/khanrafiofficiiaals/" target="_blank" rel="noopener noreferrer" class="reveal reveal-delay-5 social-card">
+                <a href="https://www.facebook.com/webmarkagency.it" target="_blank" rel="noopener noreferrer" class="reveal reveal-delay-5 social-card">
                     <svg class="social-icon" viewBox="0 0 24 24" fill="#1877F2">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                     </svg>
                     <span class="font-medium text-sm">Facebook</span>
                 </a>
-               <!-- Instagram -->
-               <a href="https://www.instagram.com/khan.mohammad.rafi/" target="_blank" rel="noopener noreferrer" class="reveal reveal-delay-4 social-card">
-                  <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                     <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5C19.426 22 22 19.426 22 16.25v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 2h8.5C18.216 4 20 5.784 20 7.75v8.5c0 1.966-1.784 3.75-3.75 3.75h-8.5C5.784 20 4 18.216 4 16.25v-8.5C4 5.784 5.784 4 7.75 4zm8.75 1.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
-                     </svg>
-                    <span class="font-medium text-sm">Instagram</span>
-                 </a>
 
                  <!-- Telegram -->
-<a href="https://t.me/secret_rafi" target="_blank" rel="noopener noreferrer" class="reveal reveal-delay-4 social-card">
-    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M9.04 15.47l-.39 5.48c.56 0 .8-.24 1.09-.53l2.62-2.5 5.43 3.97c1 .55 1.7.26 1.95-.92l3.54-16.6h.01c.3-1.4-.5-1.95-1.48-1.58L1.74 9.27c-1.36.53-1.34 1.29-.23 1.63l5.66 1.77L19.94 5.3c.6-.4 1.15-.18.7.22"/>
-    </svg>
-    <span class="font-medium text-sm">Telegram</span>
-</a>
-
-
-
-
-            </div>
+                 <a href="http://t.me/webmarkagency" target="_blank" rel="noopener noreferrer" class="reveal reveal-delay-4 social-card">
+                     <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                           <path d="M9.04 15.47l-.39 5.48c.56 0 .8-.24 1.09-.53l2.62-2.5 5.43 3.97c1 .55 1.7.26 1.95-.92l3.54-16.6h.01c.3-1.4-.5-1.95-1.48-1.58L1.74 9.27c-1.36.53-1.34 1.29-.23 1.63l5.66 1.77L19.94 5.3c.6-.4 1.15-.18.7.22"/>
+                     </svg>
+                     <span class="font-medium text-sm">Telegram</span>
+                 </a>
+              </div>
         </div>
     </section>
     
@@ -1430,7 +1343,7 @@
                             </div>
                             <div>
                                 <div class="text-sm text-muted">Email</div>
-                                <div class="font-medium">mdrafikhan.work@gmail.com</div>
+                                <div class="font-medium">webmarkagency.it@gmail.com</div>
                             </div>
                         </div>
                         
@@ -1504,10 +1417,10 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="font-display text-xl font-bold">
-                    MD RAFI KHAN<span class="text-accent">.</span>
+                    WEBMARK AGENCY<span class="text-accent">.</span>
                 </div>
                 <div class="text-sm text-muted">
-                    &copy; 2026 MD RAFI KHAN. All rights reserved. YouTube SEO Specialist.
+                    &copy; 2026 WEBMARK AGENCY. All rights reserved.
                 </div>
                 <div class="flex items-center gap-4">
                     <a href="privacy.html" class="text-muted hover:text-light transition-colors">Privacy</a>
@@ -1633,7 +1546,7 @@
                 
                 try {
                     // Google Sheets Web App URL
-                    const googleScriptURL = 'https://script.google.com/macros/s/AKfycbyWeBhxuxUKdrIvTw_SblslbVVaATJvBgMcAq-tOVAXUdDt3CjbjfJX_bSn0j07ohPU/exec';
+                    const googleScriptURL = 'https://script.google.com/macros/s/AKfycby28yeU0cafNMJzK7h23MJ8e5BcexB_RIf6UJg60rb-AnKHrZrnHmblbh9i0pYLjrFaNw/exec';
                     
                     await fetch(googleScriptURL, {
                         method: 'POST',
